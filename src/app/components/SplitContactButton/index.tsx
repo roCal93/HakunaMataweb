@@ -117,6 +117,8 @@ export default function SplitContactButton({
       e.preventDefault();
       const { name, email, message } = formData;
 
+      console.log('[FORM] Tentative d\'envoi...');
+
       if (!name.trim() || name.length < 2) {
         alert(messages.contactButton.form.validation.name);
         return;
@@ -130,6 +132,8 @@ export default function SplitContactButton({
         return;
       }
 
+      console.log('[FORM] Validation OK, envoi vers /api/contact...');
+
       try {
         const res = await fetch('/api/contact', {
           method: 'POST',
@@ -137,7 +141,10 @@ export default function SplitContactButton({
           body: JSON.stringify({ name, email, message }),
         });
 
+        console.log('[FORM] Réponse reçue:', res.status, res.statusText);
+
         if (res.ok) {
+          console.log('[FORM] Succès!');
           setShowForm(false);
           setFormData({ name: '', email: '', message: '' });
           setFormSuccess(true);
@@ -152,9 +159,11 @@ export default function SplitContactButton({
           }, ANIMATION_TIMINGS.LIVE_REGION_DELAY);
         } else {
           const data = await res.json();
+          console.error('[FORM] Erreur serveur:', data);
           alert(data.error || messages.contactButton.form.error.send);
         }
       } catch (error) {
+        console.error('[FORM] Erreur réseau:', error);
         alert(`${messages.contactButton.form.error.network} ${error}`);
       }
     },

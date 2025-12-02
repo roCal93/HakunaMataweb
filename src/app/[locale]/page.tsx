@@ -9,9 +9,8 @@ const translations: Record<string, Messages> = {
 };
 
 export default async function Home({ params }: { params: { locale: string } | Promise<{ locale: string }> }) {
-  const resolved = (params && typeof (params as any).then === 'function') ? await (params as Promise<{ locale: string }>) : (params as { locale: string });
+  const resolved = params instanceof Promise ? await params : params;
   const { locale } = resolved;
   const messages = translations[locale] ?? translations.fr;
-
   return <HomeClient messages={messages} locale={locale} />;
 }

@@ -71,13 +71,25 @@ function sanitizeHtml(str: string): string {
 }
 
 export async function POST(req: NextRequest) {
+  console.log('[CONTACT API] Requête reçue');
+  
   // Rate limiting
   const rateKey = getRateLimitKey(req);
   if (rateKey && isRateLimited(rateKey)) {
+    console.log('[CONTACT API] Rate limit atteint pour:', rateKey);
     return withCacheControl(NextResponse.json({ error: 'Trop de requêtes. Veuillez réessayer plus tard.' }, { status: 429 }));
   }
 
-  const { name, email, message } = await req.json();
+  let body;
+  try {
+    body = await req.json();
+  } catch (error) {
+    console.error('[CONTACT API] Erreur parsing JSON:', error);
+    return withCacheControl(NextResponse.json({ error: 'Format de requête invalide' }, { status: 400 }));
+  }
+
+  const { name, email, message } = body;
+  console.log('[CONTACT API] Données reçues:', { name, email: email?.substring(0, 5) + '...', messageLength: message?.length });
   
   // Validation des champs
   if (!name || !email || !message) {
@@ -96,9 +108,20 @@ export async function POST(req: NextRequest) {
 
   // Validation du message (min 10 caractères, max 5000)
   if (typeof message !== 'string' || message.trim().length < 10 || message.length > 5000) {
+    console.log('[CONTACT API] Message invalide:', message?.length);
     return withCacheControl(NextResponse.json({ error: 'Message invalide (10-5000 caractères)' }, { status: 400 }));
   }
 
+  // Vérifier que les variables d'environnement sont présentes
+  if (!process.env.CONTACT_EMAIL || !process.env.CONTACT_EMAIL_PASS) {
+    console.error('[CONTACT API] Variables d\'environnement manquantes!');
+    console.error('[CONTACT API] CONTACT_EMAIL:', process.env.CONTACT_EMAIL ? 'défini' : 'MANQUANT');
+    console.error('[CONTACT API] CONTACT_EMAIL_PASS:', process.env.CONTACT_EMAIL_PASS ? 'défini' : 'MANQUANT');
+    return withCacheControl(NextResponse.json({ error: 'Configuration email manquante. Contactez l\'administrateur.' }, { status: 500 }));
+  }
+
+  console.log('[CONTACT API] Configuration email OK, création du transporteur...');
+  
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -113,6 +136,8 @@ export async function POST(req: NextRequest) {
   const safeMessage = sanitizeHtml(message.trim());
 
   try {
+    console.log('[CONTACT API] Envoi de l\'email...');
+    
     await transporter.sendMail({
       from: process.env.CONTACT_EMAIL, // Toujours envoyer depuis notre propre email
       replyTo: email, // L'email de l'utilisateur en reply-to
@@ -130,13 +155,23 @@ export async function POST(req: NextRequest) {
         </div>
       `
     });
+    
+    console.log('[CONTACT API] Email envoyé avec succès!');
     return withCacheControl(NextResponse.json({ success: true }, { status: 200 }));
   } catch (error) {
-    // Log error in production without exposing details
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Erreur envoi email:', error);
+    // Toujours logger les erreurs en production pour débugger
+    console.error('[CONTACT API] Erreur lors de l\'envoi:', error);
+    
+    // Détails de l'erreur
+    if (error instanceof Error) {
+      console.error('[CONTACT API] Message d\'erreur:', error.message);
+      console.error('[CONTACT API] Stack:', error.stack);
     }
-    return withCacheControl(NextResponse.json({ error: "Erreur lors de l'envoi du mail" }, { status: 500 }));
+    
+    return withCacheControl(NextResponse.json({ 
+      error: "Erreur lors de l'envoi du mail. Veuillez réessayer ou nous contacter directement.",
+      details: process.env.NODE_ENV === 'development' ? (error instanceof Error ? error.message : String(error)) : undefined
+    }, { status: 500 }));
   }
 }
 

@@ -99,7 +99,8 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
         >
           <div className="mx-auto max-w-7xl text-center">
             <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-6xl">
-              {messages.home.title} <span className="text-amber-600">{messages.home.subtitle}</span>
+              {messages.home.title}
+              <div className="text-amber-600">{messages.home.subtitle}</div>
             </h2>
             <p className="mx-auto my-8 max-w-3xl text-xl text-gray-600">
               {messages.about.paragraph}
