@@ -119,14 +119,25 @@ export async function POST(req: NextRequest) {
   const safeMessage = sanitizeHtml(message.trim());
 
   const emailSubject = `[Contact Hakuna Mataweb] Nouveau message de ${safeName}`;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://hakunamataweb-production.up.railway.app';
+  const logoUrl = `${siteUrl}/images/empreinte-patte.webp`;
+  
   const emailHtml = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #d97706;">Nouveau message de contact</h2>
-      <p><strong>Nom:</strong> ${safeName}</p>
-      <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
-      <hr style="border: 1px solid #fde68a;" />
-      <p><strong>Message:</strong></p>
-      <p style="white-space: pre-wrap;">${safeMessage}</p>
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fffbeb; border-radius: 8px;">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <img src="${logoUrl}" alt="Hakuna Mataweb" style="width: 60px; height: 60px; margin-bottom: 10px;" />
+        <h2 style="color: #d97706; margin: 0;">Nouveau message de contact</h2>
+      </div>
+      <div style="background-color: white; padding: 20px; border-radius: 8px; border: 2px solid #fde68a;">
+        <p style="margin: 10px 0;"><strong style="color: #92400e;">Nom:</strong> ${safeName}</p>
+        <p style="margin: 10px 0;"><strong style="color: #92400e;">Email:</strong> <a href="mailto:${safeEmail}" style="color: #d97706;">${safeEmail}</a></p>
+        <hr style="border: none; border-top: 1px solid #fde68a; margin: 20px 0;" />
+        <p style="margin: 10px 0;"><strong style="color: #92400e;">Message:</strong></p>
+        <p style="white-space: pre-wrap; color: #292524; line-height: 1.6;">${safeMessage}</p>
+      </div>
+      <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #78716c;">
+        <p>🐾 Hakuna Mataweb - Votre agence web sur mesure</p>
+      </div>
     </div>
   `;
   const emailText = `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
