@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  /* Flip card core styles */
+  .flip-inner {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: transform .5s cubic-bezier(.2,.9,.2,1);
+    will-change: transform;
+    transform-origin: center;
+  }
+
+  .group:hover .flip-inner {
+    transform: rotateY(180deg);
+  }
+  .group:focus-within .flip-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* Prevent backface bleed-through */
+  .flip-front,
+  .flip-back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  .flip-front {
+    transform: rotateY(0deg);
+  }
+
+  .flip-back {
+    transform: rotateY(180deg);
+  }
+
+  /* For checked state on checkbox */
+  .flip-toggle:checked + label .flip-inner {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+  }
+
+  /* For flipped state */
+  .flip-inner.flipped {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+  }
+
+  /* Wrapper: keep layout stable */
+  .flip-wrapper {
+    display: inline-block;
+  }
+
+  /* Pop animation for buttons */
+  @keyframes pop-in {
+    0% { transform: scale(.95); }
+    60% { transform: scale(1.07); }
+    100% { transform: scale(1); }
+  }
+
+  .animate-pop {
+    animation: pop-in 0.5s cubic-bezier(.2,.9,.2,1) both;
+  }
+
+  .filter-orange {
+    filter: brightness(0) saturate(100%) invert(70%) sepia(80%) saturate(500%) hue-rotate(-20deg);
+  }
+}

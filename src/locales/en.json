@@ -1,0 +1,142 @@
+{
+  "home": {
+    "title": "Hakuna Mataweb",
+    "subtitle": "Web with no worries"
+  },
+  "about": {
+    "heading": "About",
+    "paragraph": "Hakuna Mataweb, your web agency specialized in building bespoke websites. I design unique digital solutions tailored to every need and reflecting my clients' identity. My mission: create projects that stand out, reflect you, and leave a mark."
+  },
+  "explore": {
+    "heading": "Explore my skills",
+    "paragraph": "I offer an interactive demo to show you exactly what I can build: fast sites, refined design and better visibility. Browse the examples and test features live to see what fits your project best."
+  },
+  "buttons": {
+    "demo": "See demo",
+    "explore_demo": "Explore what I can do",
+    "see_creations": "See my creations",
+    "contact": "Contact me"
+  },
+  "creations": {
+    "heading": "My Creations",
+    "paragraph": "Discover my creative and innovative projects that showcase my expertise"
+  },
+  "cards": {
+    "vitrine": {
+      "title": "Showcase Website",
+      "description": "A polished presentation website for your business with a modern design."
+    },
+    "chalet": {
+      "title": "Chalet Reservation Site",
+      "description": "An online booking platform for chalets with an integrated calendar."
+    },
+    "artisan": {
+      "title": "Artisan Site with Shop",
+      "description": "Showcase and e-commerce site for artisans with inventory management."
+    }
+  },
+  "contact": {
+    "heading": "Ready to launch your project?",
+    "paragraph": "Contact me today to discuss your needs and get a free quote."
+  },
+  "footer": {
+    "brand": "Hakuna Mataweb - Web with no worries",
+    "description": "Creation of custom websites, fast and performant for your business.",
+    "contact": "Contact",
+    "rights": "Made with passion by Hakuna Mataweb © 2025. All rights reserved."
+  },
+  "nav": {
+    "about": "About",
+    "explore": "My skills",
+    "creations": "Creations",
+    "contact": "Contact",
+    "quickLinks": "Quick links"
+  },
+  "hero": {
+    "explorer": {
+      "label": "Explore",
+      "ctaLabel": "Our skills in action",
+      "ctaDescription": "Discover our skills through an interactive demo."
+    },
+    "about": {
+      "label": "About",
+      "ctaLabel": "Discover us",
+      "ctaDescription": "Discover the vision, spirit and values of our agency."
+    },
+    "contact": {
+      "label": "Contact",
+      "ctaLabel": "Talk about your project",
+      "ctaDescription": "Let's discuss your objectives and the next step together."
+    },
+    "creations": {
+      "label": "Creations",
+      "ctaLabel": "See our creations",
+      "ctaDescription": "Discover our creative and innovative projects."
+    }
+  },
+  "aboutCards": {
+    "innovation": {
+      "alt": "Bulb",
+      "text": "Innovation at the service of your project."
+    },
+    "solutions": {
+      "alt": "Target",
+      "text": "Precise solutions adapted to your needs."
+    },
+    "identity": {
+      "alt": "Value",
+      "text": "A site that reflects your values and identity."
+    }
+  },
+  "contactButton": {
+    "initial": "Contact me",
+    "email": "E-mail",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "callback": "I'll call you back",
+    "close": "Close",
+    "form": {
+      "title": "I'll call you back",
+      "name": "Full name",
+      "email": "Email",
+      "message": "Message (optional)",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "your.email@example.com",
+      "messagePlaceholder": "Your message...",
+      "cancel": "Cancel",
+      "send": "Send",
+      "success": "Message received!",
+      "copied": "Copied",
+      "validation": {
+        "name": "Please enter a valid name (at least 2 characters).",
+        "email": "Please enter a valid email address.",
+        "message": "Please enter a message of at least 10 characters."
+      },
+      "error": {
+        "network": "Network or server error while sending the message:",
+        "send": "Error sending the message."
+      }
+    }
+  },
+  "aria": {
+    "languageSwitcher": "language switcher",
+    "linkedin": "Romain Calmelet's LinkedIn",
+    "github": "Romain Calmelet's GitHub",
+    "chooseContact": "Choose a contact method",
+    "callbackForm": "Callback form",
+    "contactForm": "Form to be contacted",
+    "closeForm": "Close the form",
+    "fullName": "Full name",
+    "emailAddress": "Email address",
+    "optionalMessage": "Optional message",
+    "cancelCloseForm": "Cancel and close the form",
+    "sendForm": "Send the form",
+    "closeContactMenu": "Close the contact menu",
+    "scrollDownAbout": "Scroll down to About section",
+    "footerText": "Made with passion by Hakuna Mataweb © 2025. All rights reserved.",
+    "pawPrint": "paw print",
+    "currentLanguage": "Current language",
+    "switchToFrench": "Switch to French",
+    "switchToEnglish": "Switch to English"
+  }
+}

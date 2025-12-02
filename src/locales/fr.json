@@ -1,0 +1,142 @@
+{
+  "home": {
+    "title": "Hakuna Mataweb",
+    "subtitle": "le web sans souci"
+  },
+  "about": {
+    "heading": "À propos",
+    "paragraph": "Hakuna Mataweb, votre agence web experte dans la création de sites sur-mesure. Je conçois des solutions digitales uniques, pensées pour s’adapter à chaque besoin et refléter l’identité de mes clients. Ma mission : réaliser des projets qui se démarquent, vous ressemblent et marquent les esprits."
+  },
+  "explore": {
+    "heading": "Explorer mes compétences",
+    "paragraph": "Je vous propose une démo interactive pour vous montrer concrètement ce que je peux réaliser : des sites rapides, un design soigné et une meilleure visibilité. Parcourez les exemples et testez les fonctionnalités en direct pour voir ce qui convient le mieux à votre projet."
+  },
+  "buttons": {
+    "demo": "Voir la démo",
+    "explore_demo": "Explore ce que je sais faire",
+    "see_creations": "Voir mes réalisations",
+    "contact": "Contactez-moi"
+  },
+  "creations": {
+    "heading": "Mes Créations",
+    "paragraph": "Découvrez mes projets créatifs et innovants qui illustrent mon savoir-faire"
+  },
+  "cards": {
+    "vitrine": {
+      "title": "Site Vitrine",
+      "description": "Présentation élégante de votre entreprise avec design moderne."
+    },
+    "chalet": {
+      "title": "Site de Réservation de Chalets",
+      "description": "Plateforme de réservation en ligne pour chalets avec calendrier intégré."
+    },
+    "artisan": {
+      "title": "Site d'Artisan avec Boutique",
+      "description": "Site vitrine et boutique en ligne pour artisans avec gestion des stocks."
+    }
+  },
+  "contact": {
+    "heading": "Prêt à lancer votre projet ?",
+    "paragraph": "Contactez-moi dès aujourd'hui pour discuter de vos besoins et obtenir un devis gratuit."
+  },
+  "footer": {
+    "brand": "Hakuna Mataweb - le web sans souci",
+    "description": "Création de sites web sur-mesure, rapides et performants pour votre entreprise.",
+    "contact": "Contact",
+    "rights": "Fait avec passion par Hakuna Mataweb © 2025. Tous droits réservés."
+  },
+  "nav": {
+    "about": "À propos",
+    "explore": "Mes compétences",
+    "creations": "Mes créations",
+    "contact": "Contact",
+    "quickLinks": "Liens rapides"
+  },
+  "hero": {
+    "explorer": {
+      "label": "Explorer",
+      "ctaLabel": "Nos compétences en action",
+      "ctaDescription": "Découvrez nos compétences à travers une démo interactive."
+    },
+    "about": {
+      "label": "À propos",
+      "ctaLabel": "Découvrez-nous",
+      "ctaDescription": "Découvrez la vision, l’esprit et les valeurs de notre agence"
+    },
+    "contact": {
+      "label": "Contact",
+      "ctaLabel": "Parler de votre projet",
+      "ctaDescription": "Discutons ensemble de vos objectifs et de la prochaine étape."
+    },
+    "creations": {
+      "label": "Créations",
+      "ctaLabel": "Voir nos créations",
+      "ctaDescription": "Découvrez nos projets créatifs et innovants."
+    }
+  },
+  "aboutCards": {
+    "innovation": {
+      "alt": "Ampoule",
+      "text": "L'innovation au service de votre projet."
+    },
+    "solutions": {
+      "alt": "Cible",
+      "text": "Des solutions précises et adaptées à vos besoins."
+    },
+    "identity": {
+      "alt": "Valeur",
+      "text": "Un site qui reflète vos valeurs et votre identité."
+    }
+  },
+  "contactButton": {
+    "initial": "Me contacter",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "whatsapp": "WhatsApp",
+    "callback": "Je vous recontacte",
+    "close": "Fermer",
+    "form": {
+      "title": "Je vous recontacte",
+      "name": "Nom complet",
+      "email": "Email",
+      "message": "Message (optionnel)",
+      "namePlaceholder": "Votre nom",
+      "emailPlaceholder": "votre.email@exemple.com",
+      "messagePlaceholder": "Votre message...",
+      "cancel": "Annuler",
+      "send": "Envoyer",
+      "success": "Message bien reçu !",
+      "copied": "Copié",
+      "validation": {
+        "name": "Veuillez entrer un nom valide (au moins 2 caractères).",
+        "email": "Veuillez entrer une adresse email valide.",
+        "message": "Veuillez entrer un message d'au moins 10 caractères."
+      },
+      "error": {
+        "network": "Erreur réseau ou serveur lors de l'envoi du message:",
+        "send": "Erreur lors de l'envoi du message."
+      }
+    }
+  },
+  "aria": {
+    "languageSwitcher": "sélecteur de langue",
+    "linkedin": "LinkedIn de Romain Calmelet",
+    "github": "GitHub de Romain Calmelet",
+    "chooseContact": "Choisissez un moyen de contact",
+    "callbackForm": "Formulaire de rappel",
+    "contactForm": "Formulaire pour être recontacté",
+    "closeForm": "Fermer le formulaire",
+    "fullName": "Nom complet",
+    "emailAddress": "Adresse email",
+    "optionalMessage": "Message optionnel",
+    "cancelCloseForm": "Annuler et fermer le formulaire",
+    "sendForm": "Envoyer le formulaire",
+    "closeContactMenu": "Fermer le menu de contact",
+    "scrollDownAbout": "Faire défiler vers la section À propos",
+    "footerText": "Fait avec passion par Hakuna Mataweb © 2025. Tous droits réservés.",
+    "pawPrint": "empreinte de patte",
+    "currentLanguage": "Langue actuelle",
+    "switchToFrench": "Passer au français",
+    "switchToEnglish": "Passer à l'anglais"
+  }
+}
