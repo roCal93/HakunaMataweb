@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 // Rate limiting simple en mémoire (pour production, utilisez Redis)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -112,52 +113,79 @@ export async function POST(req: NextRequest) {
     return withCacheControl(NextResponse.json({ error: 'Message invalide (10-5000 caractères)' }, { status: 400 }));
   }
 
-  // Vérifier que les variables d'environnement sont présentes
-  if (!process.env.CONTACT_EMAIL || !process.env.CONTACT_EMAIL_PASS) {
-    console.error('[CONTACT API] Variables d\'environnement manquantes!');
-    console.error('[CONTACT API] CONTACT_EMAIL:', process.env.CONTACT_EMAIL ? 'défini' : 'MANQUANT');
-    console.error('[CONTACT API] CONTACT_EMAIL_PASS:', process.env.CONTACT_EMAIL_PASS ? 'défini' : 'MANQUANT');
-    return withCacheControl(NextResponse.json({ error: 'Configuration email manquante. Contactez l\'administrateur.' }, { status: 500 }));
-  }
-
-  console.log('[CONTACT API] Configuration email OK, création du transporteur...');
-  
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.CONTACT_EMAIL,
-      pass: process.env.CONTACT_EMAIL_PASS,
-    },
-  });
-
   // Sanitize les entrées pour le HTML
   const safeName = sanitizeHtml(name.trim());
   const safeEmail = sanitizeHtml(email.trim());
   const safeMessage = sanitizeHtml(message.trim());
 
+  const emailSubject = `[Contact Hakuna Mataweb] Nouveau message de ${safeName}`;
+  const emailHtml = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h2 style="color: #d97706;">Nouveau message de contact</h2>
+      <p><strong>Nom:</strong> ${safeName}</p>
+      <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
+      <hr style="border: 1px solid #fde68a;" />
+      <p><strong>Message:</strong></p>
+      <p style="white-space: pre-wrap;">${safeMessage}</p>
+    </div>
+  `;
+  const emailText = `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+
   try {
-    console.log('[CONTACT API] Envoi de l\'email...');
-    
-    await transporter.sendMail({
-      from: process.env.CONTACT_EMAIL, // Toujours envoyer depuis notre propre email
-      replyTo: email, // L'email de l'utilisateur en reply-to
-      to: process.env.CONTACT_EMAIL,
-      subject: `[Contact Hakuna Mataweb] Nouveau message de ${safeName}`,
-      text: `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #d97706;">Nouveau message de contact</h2>
-          <p><strong>Nom:</strong> ${safeName}</p>
-          <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
-          <hr style="border: 1px solid #fde68a;" />
-          <p><strong>Message:</strong></p>
-          <p style="white-space: pre-wrap;">${safeMessage}</p>
-        </div>
-      `
-    });
-    
-    console.log('[CONTACT API] Email envoyé avec succès!');
-    return withCacheControl(NextResponse.json({ success: true }, { status: 200 }));
+    // Utiliser Resend en production, Gmail en développement
+    if (process.env.RESEND_API_KEY) {
+      console.log('[CONTACT API] Utilisation de Resend...');
+      
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      
+      const { data, error } = await resend.emails.send({
+        from: 'Hakuna Mataweb <contact@hakunamataweb.fr>',
+        to: [process.env.CONTACT_EMAIL || 'romaincalmelet@gmail.com'],
+        replyTo: email,
+        subject: emailSubject,
+        html: emailHtml,
+      });
+
+      if (error) {
+        console.error('[CONTACT API] Erreur Resend:', error);
+        throw error;
+      }
+
+      console.log('[CONTACT API] Email envoyé avec succès via Resend!', data);
+      return withCacheControl(NextResponse.json({ success: true }, { status: 200 }));
+      
+    } else if (process.env.CONTACT_EMAIL && process.env.CONTACT_EMAIL_PASS) {
+      console.log('[CONTACT API] Utilisation de Gmail (nodemailer)...');
+      
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.CONTACT_EMAIL,
+          pass: process.env.CONTACT_EMAIL_PASS,
+        },
+      });
+      
+      await transporter.sendMail({
+        from: process.env.CONTACT_EMAIL,
+        replyTo: email,
+        to: process.env.CONTACT_EMAIL,
+        subject: emailSubject,
+        text: emailText,
+        html: emailHtml,
+      });
+      
+      console.log('[CONTACT API] Email envoyé avec succès via Gmail!');
+      return withCacheControl(NextResponse.json({ success: true }, { status: 200 }));
+      
+    } else {
+      console.error('[CONTACT API] Aucune configuration email trouvée!');
+      console.error('[CONTACT API] RESEND_API_KEY:', process.env.RESEND_API_KEY ? 'défini' : 'MANQUANT');
+      console.error('[CONTACT API] CONTACT_EMAIL:', process.env.CONTACT_EMAIL ? 'défini' : 'MANQUANT');
+      console.error('[CONTACT API] CONTACT_EMAIL_PASS:', process.env.CONTACT_EMAIL_PASS ? 'défini' : 'MANQUANT');
+      return withCacheControl(NextResponse.json({ 
+        error: 'Configuration email manquante. Veuillez configurer RESEND_API_KEY ou CONTACT_EMAIL/CONTACT_EMAIL_PASS.' 
+      }, { status: 500 }));
+    }
   } catch (error) {
     // Toujours logger les erreurs en production pour débugger
     console.error('[CONTACT API] Erreur lors de l\'envoi:', error);

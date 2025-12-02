@@ -5,8 +5,8 @@
 ### Vercel (Recommandé)
 1. Connecter votre repo GitHub à Vercel
 2. Configurer les variables d'environnement :
-   - `CONTACT_EMAIL`
-   - `CONTACT_EMAIL_PASS`
+   - `RESEND_API_KEY` (recommandé) OU
+   - `CONTACT_EMAIL` + `CONTACT_EMAIL_PASS` (Gmail)
    - `NEXT_PUBLIC_SITE_URL=https://hakunamataweb.com`
 3. Déployer automatiquement
 
@@ -34,12 +34,28 @@ Value: hakunamataweb.com
 
 ## 🔒 Variables d'environnement de production
 
+### Option 1: Resend (Recommandé)
+```env
+RESEND_API_KEY=re_votre_clé_api
+NEXT_PUBLIC_SITE_URL=https://hakunamataweb.com
+NODE_ENV=production
+```
+
+**Comment obtenir une clé Resend :**
+1. Créez un compte gratuit sur https://resend.com
+2. Vérifiez votre domaine ou utilisez leur domaine de test
+3. Générez une clé API dans Dashboard → API Keys
+4. Ajoutez la clé dans vos variables d'environnement
+
+### Option 2: Gmail (Développement local uniquement)
 ```env
 CONTACT_EMAIL=votre-email@gmail.com
 CONTACT_EMAIL_PASS=votre-app-password
 NEXT_PUBLIC_SITE_URL=https://hakunamataweb.com
 NODE_ENV=production
 ```
+
+⚠️ **Note:** Gmail peut bloquer les emails depuis des hébergeurs comme Railway/Vercel. Utilisez Resend pour la production.
 
 ## ✅ Checklist avant déploiement
 
@@ -84,9 +100,12 @@ Ou manuellement :
 ## 🐛 Dépannage
 
 ### Le formulaire ne fonctionne pas
-- Vérifier que `CONTACT_EMAIL` et `CONTACT_EMAIL_PASS` sont configurés
-- Vérifier que le mot de passe est un "App Password" Gmail
-- Vérifier les logs de l'hébergeur
+- **Production:** Utilisez Resend au lieu de Gmail (Gmail bloque souvent les hébergeurs)
+  - Créez un compte sur https://resend.com (gratuit)
+  - Ajoutez `RESEND_API_KEY` dans vos variables d'environnement
+- **Gmail:** Vérifier que `CONTACT_EMAIL` et `CONTACT_EMAIL_PASS` sont configurés
+- Vérifier que le mot de passe est un "App Password" Gmail (https://myaccount.google.com/apppasswords)
+- Vérifier les logs de l'hébergeur pour voir l'erreur exacte
 
 ### Pages 404
 - Vérifier que les routes sont bien générées statiquement
