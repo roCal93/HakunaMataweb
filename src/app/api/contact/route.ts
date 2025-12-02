@@ -138,9 +138,15 @@ export async function POST(req: NextRequest) {
       
       const resend = new Resend(process.env.RESEND_API_KEY);
       
+      // Utiliser le domaine de test de Resend ou le domaine personnalisé si configuré
+      const fromEmail = process.env.RESEND_FROM_EMAIL || 'Hakuna Mataweb <onboarding@resend.dev>';
+      const toEmail = process.env.CONTACT_EMAIL || 'romaincalmelet@gmail.com';
+      
+      console.log('[CONTACT API] Envoi depuis:', fromEmail, 'vers:', toEmail);
+      
       const { data, error } = await resend.emails.send({
-        from: 'Hakuna Mataweb <contact@hakunamataweb.fr>',
-        to: [process.env.CONTACT_EMAIL || 'romaincalmelet@gmail.com'],
+        from: fromEmail,
+        to: [toEmail],
         replyTo: email,
         subject: emailSubject,
         html: emailHtml,
