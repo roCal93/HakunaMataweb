@@ -12,7 +12,7 @@ type ChevronProps = {
 export default function Chevron({ hovered, onMouseEnter, onMouseLeave, onClick }: ChevronProps) {
   return (
     <m.div
-      className={`fixed bottom-8 left-0 right-0 mx-auto w-fit z-80 cursor-pointer p-4 ${hovered ? 'text-amber-800' : 'text-amber-600'}`}
+      className={`fixed bottom-8 left-0 right-0 mx-auto w-fit z-[100] cursor-pointer p-4 ${hovered ? 'text-amber-800' : 'text-amber-600'}`}
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, type: 'spring', stiffness: 80 }}

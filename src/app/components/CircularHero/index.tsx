@@ -14,7 +14,6 @@ import {
   BREAKPOINTS,
   SCALE_VALUES,
   GRADIENTS,
-  QUADRANTS_ORDER,
   SECTION_ROTATIONS,
 } from "./constants";
 import {
@@ -28,8 +27,7 @@ export function CircularHero({ messages }: CircularHeroProps) {
   // Animation state
   const [animateIn, setAnimateIn] = useState<'start' | 'return' | 'none'>('start');
   const [reduceMotion, setReduceMotion] = useState(false);
-  const [entryActive, setEntryActive] = useState<Quadrant | null>(null);
-  const [separatorsVisible, setSeparatorsVisible] = useState(false);
+  const [separatorsVisible] = useState(true);
   const [gradientIndex, setGradientIndex] = useState(0);
 
   // Interaction state
@@ -45,13 +43,8 @@ export function CircularHero({ messages }: CircularHeroProps) {
   const [mobileScale, setMobileScale] = useState<number>(SCALE_VALUES.MOBILE);
 
   // Refs for intervals and timeouts
-  const intervalRef = useRef<number | null>(null);
-  const separatorsTimeoutRef = useRef<number | null>(null);
-  const initRotationTimeoutRef = useRef<number | null>(null);
-  const pausedRef = useRef(false);
-  const resumeTimeoutRef = useRef<number | null>(null);
-  const currentQuadIndexRef = useRef(0);
   const closeTimeoutRef = useRef<number | null>(null);
+  // (kept) close timeout for overlay closing
 
   // Refs for DOM elements
   const outerCircleRef = useRef<HTMLDivElement | null>(null);
@@ -100,40 +93,9 @@ export function CircularHero({ messages }: CircularHeroProps) {
     [messages.hero]
   );
 
-  // Advance to next quadrant in automatic rotation
-  const nextQuad = useCallback(() => {
-    currentQuadIndexRef.current = (currentQuadIndexRef.current + 1) % 4;
-    setEntryActive(QUADRANTS_ORDER[currentQuadIndexRef.current]);
-  }, []);
-
-  // Pause automatic rotation
-  const pauseAutoRotation = useCallback(() => {
-    if (intervalRef.current) {
-      window.clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-    pausedRef.current = true;
-    if (resumeTimeoutRef.current) {
-      window.clearTimeout(resumeTimeoutRef.current);
-      resumeTimeoutRef.current = null;
-    }
-  }, []);
-
-  // Resume automatic rotation after delay
-  const resumeAutoRotation = useCallback(() => {
-    if (resumeTimeoutRef.current) {
-      window.clearTimeout(resumeTimeoutRef.current);
-    }
-    resumeTimeoutRef.current = window.setTimeout(() => {
-      pausedRef.current = false;
-      if (!intervalRef.current) {
-        intervalRef.current = window.setInterval(
-          nextQuad,
-          reduceMotion ? TIMEOUTS.QUADRANT_LOOP_REDUCED : TIMEOUTS.QUADRANT_LOOP
-        );
-      }
-    }, TIMEOUTS.RESUME_LOOP);
-  }, [nextQuad, reduceMotion]);
+  // No-op pause/resume (auto-rotation removed)
+  const pauseAutoRotation = useCallback(() => {}, []);
+  const resumeAutoRotation = useCallback(() => {}, []);
 
   // Check for reduced motion preference
   useEffect(() => {
@@ -159,31 +121,14 @@ export function CircularHero({ messages }: CircularHeroProps) {
       reduceMotion ? 0 : TIMEOUTS.ANIMATE_IN_COMPLETE
     );
 
-    separatorsTimeoutRef.current = window.setTimeout(
-      () => setSeparatorsVisible(true),
-      reduceMotion ? 0 : TIMEOUTS.SEPARATORS_VISIBLE
-    );
-
-    initRotationTimeoutRef.current = window.setTimeout(() => {
-      currentQuadIndexRef.current = 0;
-      setEntryActive(QUADRANTS_ORDER[0]);
-      if (!intervalRef.current) {
-        intervalRef.current = window.setInterval(
-          nextQuad,
-          reduceMotion ? TIMEOUTS.QUADRANT_LOOP_REDUCED : TIMEOUTS.QUADRANT_LOOP
-        );
-      }
-    }, reduceMotion ? 0 : TIMEOUTS.INIT_ROTATION);
+    // Separators are visible by default; auto-rotation removed
 
     return () => {
       clearTimeout(timeout1);
       clearTimeout(timeout2);
-      if (separatorsTimeoutRef.current) window.clearTimeout(separatorsTimeoutRef.current);
-      if (initRotationTimeoutRef.current) window.clearTimeout(initRotationTimeoutRef.current);
-      if (intervalRef.current) window.clearInterval(intervalRef.current);
-      if (resumeTimeoutRef.current) window.clearTimeout(resumeTimeoutRef.current);
+      // Nothing to clean up (auto-rotation removed)
     };
-  }, [nextQuad, reduceMotion]);
+  }, [reduceMotion]);
 
   // Gradient rotation animation
   useEffect(() => {
@@ -386,13 +331,23 @@ export function CircularHero({ messages }: CircularHeroProps) {
       setActiveQuadrant(null);
       resumeAutoRotation();
     }
-  }, []);
+  }, [pauseAutoRotation, resumeAutoRotation]);
 
-  // Handle inner circle click (scroll to top)
+  // Handle inner circle click (scroll to top or about)
   const handleInnerCircleClick = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (isCompact) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const el = document.getElementById('about');
+      if (el) {
+        pauseAutoRotation();
+        setRotation(SECTION_ROTATIONS.about);
+        smoothScrollTo(el);
+        resumeAutoRotation();
+      }
+    }
     setActiveQuadrant(null);
-  }, []);
+  }, [isCompact, pauseAutoRotation, resumeAutoRotation]);
 
   // Handle link click
   const handleLinkClick = useCallback(
@@ -449,20 +404,71 @@ export function CircularHero({ messages }: CircularHeroProps) {
   const compactTranslation =
     viewportWidth !== null && viewportWidth < BREAKPOINTS.MOBILE ? '-10rem' : '-5rem';
 
-  const isAutoRunning = !!intervalRef.current && !pausedRef.current;
-  const currentQuadrant = animateIn !== 'none' || isAutoRunning ? entryActive : activeQuadrant;
+  const currentQuadrant = activeQuadrant;
   const activeItem = navItems.find((item) => item.id === currentQuadrant) || null;
 
   return (
     <>
-      {!isCompact && mobileScale === 1 && showOverlays && (
-        <QuadrantOverlay
-          currentQuadrant={currentQuadrant}
-          activeItem={activeItem}
-          onMouseEnter={handleOverlayMouseEnter}
-          onMouseLeave={handleOverlayMouseLeave}
-          onLinkClick={handleLinkClick}
-        />
+      {!isCompact && mobileScale === 1 && showOverlays && animateIn === 'none' && (
+        <>
+          {/* Invisible hover zones for each quadrant */}
+          <div className="fixed inset-0 z-30 pointer-events-auto">
+            <div
+              className="absolute top-0 right-0 h-1/2 w-1/2"
+              onMouseEnter={() => {
+                setActiveQuadrant('explorer');
+                pauseAutoRotation();
+              }}
+              onMouseLeave={() => {
+                setActiveQuadrant(null);
+                resumeAutoRotation();
+              }}
+            />
+            <div
+              className="absolute bottom-0 right-0 w-1/2"
+              style={{ height: 'calc(50% - 120px)' }}
+              onMouseEnter={() => {
+                setActiveQuadrant('about');
+                pauseAutoRotation();
+              }}
+              onMouseLeave={() => {
+                setActiveQuadrant(null);
+                resumeAutoRotation();
+              }}
+            />
+            <div
+              className="absolute bottom-0 left-0 w-1/2"
+              style={{ height: 'calc(50% - 120px)' }}
+              onMouseEnter={() => {
+                setActiveQuadrant('contact');
+                pauseAutoRotation();
+              }}
+              onMouseLeave={() => {
+                setActiveQuadrant(null);
+                resumeAutoRotation();
+              }}
+            />
+            <div
+              className="absolute top-0 left-0 h-1/2 w-1/2"
+              onMouseEnter={() => {
+                setActiveQuadrant('creations');
+                pauseAutoRotation();
+              }}
+              onMouseLeave={() => {
+                setActiveQuadrant(null);
+                resumeAutoRotation();
+              }}
+            />
+          </div>
+
+          <QuadrantOverlay
+            currentQuadrant={currentQuadrant}
+            activeItem={activeItem}
+            onMouseEnter={handleOverlayMouseEnter}
+            onMouseLeave={handleOverlayMouseLeave}
+            onLinkClick={handleLinkClick}
+          />
+        </>
       )}
 
       <m.div
