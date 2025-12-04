@@ -56,6 +56,8 @@ export interface NavMessages {
   creations: string;
   contact: string;
   quickLinks: string;
+  privacy: string;
+  legalNotice: string;
 }
 
 export interface HeroItemMessages {
@@ -107,6 +109,10 @@ export interface ContactFormMessages {
   copied: string;
   validation: ContactFormValidationMessages;
   error: ContactFormErrorMessages;
+  // Optional fields for legal/consent UI
+  consentLabel?: string;
+  privacyNotice?: string;
+  privacyLinkText?: string;
 }
 
 export interface ContactButtonMessages {

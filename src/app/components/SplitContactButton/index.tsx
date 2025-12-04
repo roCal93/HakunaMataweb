@@ -19,7 +19,7 @@ export default function SplitContactButton({
   // State management
   const [stage, setStage] = useState<Stage>('initial');
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '', marketingConsent: false, website: '' });
   const [selectedButton, setSelectedButton] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [copiedMessage, setCopiedMessage] = useState(false);
@@ -115,7 +115,7 @@ export default function SplitContactButton({
   const handleFormSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
-      const { name, email, message } = formData;
+      const { name, email, message, marketingConsent, website } = formData;
 
       console.log('[FORM] Tentative d\'envoi...');
 
@@ -138,7 +138,7 @@ export default function SplitContactButton({
         const res = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, message }),
+          body: JSON.stringify({ name, email, message, marketingConsent, website }),
         });
 
         console.log('[FORM] Réponse reçue:', res.status, res.statusText);
@@ -146,7 +146,7 @@ export default function SplitContactButton({
         if (res.ok) {
           console.log('[FORM] Succès!');
           setShowForm(false);
-          setFormData({ name: '', email: '', message: '' });
+          setFormData({ name: '', email: '', message: '', marketingConsent: false, website: '' });
           setFormSuccess(true);
           setTimeout(() => setFormSuccess(false), ANIMATION_TIMINGS.SUCCESS_MESSAGE_DURATION);
           reset();

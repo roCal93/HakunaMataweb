@@ -50,7 +50,9 @@
     "explore": "Mes compétences",
     "creations": "Mes créations",
     "contact": "Contact",
-    "quickLinks": "Liens rapides"
+    "quickLinks": "Liens rapides",
+    "privacy": "Politique de confidentialité",
+    "legalNotice": "Mentions légales"
   },
   "hero": {
     "explorer": {
@@ -107,6 +109,9 @@
       "send": "Envoyer",
       "success": "Message bien reçu !",
       "copied": "Copié",
+      "consentLabel": "Je souhaite recevoir des actualités et offres par email (optionnel)",
+      "privacyNotice": "Nous utilisons vos données pour répondre à votre message (base légale: intérêt légitime). Destinataires: Hakuna Mataweb et notre prestataire d’email. Vos données peuvent être transférées hors UE avec des garanties appropriées. Conservation: durée du traitement puis jusqu’à 3 ans pour le suivi. Vous disposez de droits RGPD.",
+      "privacyLinkText": "Politique de confidentialité",
       "validation": {
         "name": "Veuillez entrer un nom valide (au moins 2 caractères).",
         "email": "Veuillez entrer une adresse email valide.",

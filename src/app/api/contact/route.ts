@@ -89,8 +89,14 @@ export async function POST(req: NextRequest) {
     return withCacheControl(NextResponse.json({ error: 'Format de requête invalide' }, { status: 400 }));
   }
 
-  const { name, email, message } = body;
+  const { name, email, message, marketingConsent, website } = body;
   console.log('[CONTACT API] Données reçues:', { name, email: email?.substring(0, 5) + '...', messageLength: message?.length });
+  
+  // Honeypot: if filled, silently succeed
+  if (typeof website === 'string' && website.trim().length > 0) {
+    console.log('[CONTACT API] Honeypot déclenché.');
+    return withCacheControl(NextResponse.json({ success: true }, { status: 200 }));
+  }
   
   // Validation des champs
   if (!name || !email || !message) {
@@ -124,12 +130,13 @@ export async function POST(req: NextRequest) {
       <h2 style="color: #d97706;">Hakuna Mataweb - nouveau message de contact</h2>
       <p><strong>Nom:</strong> ${safeName}</p>
       <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
+      <p><strong>Consentement marketing:</strong> ${marketingConsent ? 'Oui' : 'Non'}</p>
       <hr style="border: 1px solid #fde68a;" />
       <p><strong>Message:</strong></p>
       <p style="white-space: pre-wrap;">${safeMessage}</p>
     </div>
   `;
-  const emailText = `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+  const emailText = `Nom: ${name}\nEmail: ${email}\nConsentement marketing: ${marketingConsent ? 'Oui' : 'Non'}\n\nMessage:\n${message}`;
 
   try {
     // Utiliser Resend en production, Gmail en développement

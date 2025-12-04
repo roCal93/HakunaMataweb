@@ -50,7 +50,9 @@
     "explore": "My skills",
     "creations": "Creations",
     "contact": "Contact",
-    "quickLinks": "Quick links"
+    "quickLinks": "Quick links",
+    "privacy": "Privacy Policy",
+    "legalNotice": "Legal Notice"
   },
   "hero": {
     "explorer": {
@@ -107,6 +109,9 @@
       "send": "Send",
       "success": "Message received!",
       "copied": "Copied",
+      "consentLabel": "I would like to receive news and offers by email (optional)",
+      "privacyNotice": "We use your data to respond to your message (legal basis: legitimate interest). Recipients: Hakuna Mataweb and our email provider. Your data may be transferred outside the EU with appropriate safeguards. Retention: for the processing time then up to 3 years for follow-up. You have GDPR rights.",
+      "privacyLinkText": "Privacy Policy",
       "validation": {
         "name": "Please enter a valid name (at least 2 characters).",
         "email": "Please enter a valid email address.",

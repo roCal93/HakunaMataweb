@@ -422,7 +422,14 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                     {messages.aria.footerText}
                   </span>
                 </p>
-                
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                  <Link href={`/${locale}/privacy`} className="text-amber-200 hover:text-white transition-colors duration-300">
+                    {messages.nav.privacy}
+                  </Link>
+                  <Link href={`/${locale}/mentions-legales`} className="text-amber-200 hover:text-white transition-colors duration-300">
+                    {messages.nav.legalNotice}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

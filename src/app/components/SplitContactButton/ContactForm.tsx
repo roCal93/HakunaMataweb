@@ -1,7 +1,7 @@
 "use client";
 
 import { m } from 'framer-motion';
-import { forwardRef } from 'react';
+import { forwardRef, useMemo } from 'react';
 import type { FormData } from './types';
 import type { Messages } from '@/lib/types';
 
@@ -16,6 +16,14 @@ interface ContactFormProps {
 
 export const ContactForm = forwardRef<HTMLDivElement, ContactFormProps>(
   ({ formData, messages, nameInputRef, onFormDataChange, onSubmit, onClose }, ref) => {
+    const privacyHref = useMemo(() => {
+      if (typeof document !== 'undefined') {
+        const lang = document.documentElement.lang || 'fr';
+        return `/${lang}/privacy`;
+      }
+      return '/privacy';
+    }, []);
+
     return (
       <m.div
         className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
@@ -111,7 +119,47 @@ export const ContactForm = forwardRef<HTMLDivElement, ContactFormProps>(
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm resize-none"
                   placeholder={messages.contactButton.form.messagePlaceholder}
                   rows={3}
+                  required
+                  minLength={10}
                   aria-label={messages.aria.optionalMessage}
+                />
+              </div>
+
+              {/* Consent (optional) */}
+              <div className="flex items-start gap-2">
+                <input
+                  type="checkbox"
+                  id="form-consent"
+                  checked={formData.marketingConsent}
+                  onChange={(e) => onFormDataChange({ ...formData, marketingConsent: e.target.checked })}
+                  className="mt-1 h-4 w-4 text-amber-600 border-gray-300 rounded"
+                  aria-describedby="privacy-notice"
+                />
+                <label htmlFor="form-consent" className="text-sm text-amber-800">
+                  {messages.contactButton.form.consentLabel}
+                </label>
+              </div>
+
+              {/* Micro-mention RGPD */}
+              <p id="privacy-notice" className="text-xs text-amber-700/90">
+                {messages.contactButton.form.privacyNotice}{' '}
+                <a href={privacyHref} className="underline hover:text-amber-800">
+                  {messages.contactButton.form.privacyLinkText}
+                </a>
+                .
+              </p>
+
+              {/* Honeypot field (hidden) */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="website" className="sr-only">Website</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  autoComplete="off"
+                  tabIndex={-1}
+                  value={formData.website}
+                  onChange={(e) => onFormDataChange({ ...formData, website: e.target.value })}
                 />
               </div>
 

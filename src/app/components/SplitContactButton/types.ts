@@ -15,6 +15,9 @@ export interface FormData {
   name: string;
   email: string;
   message: string;
+  marketingConsent: boolean;
+  // Honeypot field for spam bots (should stay empty)
+  website: string;
 }
 
 export interface ButtonState {
