@@ -35,6 +35,20 @@ function createMockRequest(body: Record<string, unknown>): Partial<NextRequest> 
 }
 
 describe('Contact API', () => {
+  const ORIGINAL_ENV = process.env;
+
+  beforeEach(() => {
+    jest.resetModules();
+    process.env = { ...ORIGINAL_ENV };
+    delete process.env.RESEND_API_KEY;
+    delete process.env.CONTACT_EMAIL;
+    delete process.env.CONTACT_EMAIL_PASS;
+  });
+
+  afterAll(() => {
+    process.env = ORIGINAL_ENV;
+  });
+
   it('renvoie une erreur si les champs sont manquants', async () => {
     const mockReq = createMockRequest({});
     const res = await POST(mockReq as NextRequest);
@@ -60,6 +74,11 @@ describe('Contact API', () => {
   });
 
   it('renvoie un succès si tous les champs sont valides', async () => {
+    // Forcer le chemin nodemailer (mocké) et éviter Resend
+    process.env.CONTACT_EMAIL = 'contact@example.com';
+    process.env.CONTACT_EMAIL_PASS = 'dummy-pass';
+    delete process.env.RESEND_API_KEY;
+
     const mockReq = createMockRequest({
       name: 'Test User',
       email: 'test@example.com',
@@ -74,6 +93,11 @@ describe('Contact API', () => {
     (nodemailer.createTransport as jest.Mock).mockReturnValueOnce({
       sendMail: jest.fn().mockRejectedValue(new Error('SMTP Error')),
     });
+
+    // Forcer le chemin nodemailer (mocké)
+    process.env.CONTACT_EMAIL = 'contact@example.com';
+    process.env.CONTACT_EMAIL_PASS = 'dummy-pass';
+    delete process.env.RESEND_API_KEY;
 
     const mockReq = createMockRequest({
       name: 'Test User',
