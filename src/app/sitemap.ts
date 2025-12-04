@@ -5,7 +5,6 @@ import { locales } from '@/lib/locales';
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return locales.map((locale) => {
-    // All locales use /[locale] structure consistently
     const path = `/${locale}`;
     return {
       url: buildAbsoluteUrl(path),

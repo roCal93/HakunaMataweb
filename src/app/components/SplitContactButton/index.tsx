@@ -111,6 +111,30 @@ export default function SplitContactButton({
     [onContactSelect, contactEmail, contactPhone, setSafeTimeout]
   );
 
+  // External trigger to open the callback form from elsewhere on the page
+  useEffect(() => {
+    const onOpenCallback = () => {
+      // If still at initial stage, start animation then open callback when split
+      if (stage === 'initial') {
+        handleClick();
+        setSafeTimeout(() => handleContactClick('callback', 3), prefersReducedMotion ? 0 : ANIMATION_TIMINGS.SPLITTING_DELAY + 50);
+        return;
+      }
+      // If already split, open immediately
+      if (stage === 'split') {
+        handleContactClick('callback', 3);
+        return;
+      }
+      // Otherwise, retry shortly
+      setSafeTimeout(() => {
+        window.dispatchEvent(new Event('hmw-open-callback'));
+      }, 200);
+    };
+    window.addEventListener('hmw-open-callback', onOpenCallback);
+    return () => window.removeEventListener('hmw-open-callback', onOpenCallback);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stage, handleClick, handleContactClick, setSafeTimeout, prefersReducedMotion]);
+
   // Handle form submission
   const handleFormSubmit = useCallback(
     async (e: React.FormEvent) => {

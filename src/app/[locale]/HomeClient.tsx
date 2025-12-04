@@ -45,6 +45,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
   const [enableTrail, setEnableTrail] = useState(false);
   const [shouldRenderContactButton, setShouldRenderContactButton] = useState(false);
   const [AboutCardsComponent, setAboutCardsComponent] = useState<ComponentType<{ messages: Messages }> | null>(null);
+  const [cityModal, setCityModal] = useState<{ open: boolean; city: 'annecy' | 'aravis' | 'geneva' | null }>({ open: false, city: null });
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -325,7 +326,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
 
         <footer className="bg-gradient-to-b from-amber-600 to-amber-700 text-white relative overflow-hidden">
           <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="text-center md:text-left">
                 <h3 className="mb-4 text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                   Hakuna Mataweb
@@ -348,6 +349,38 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                   <a href="#contact" className="block text-amber-200 hover:text-white transition-colors duration-300">
                     {messages.nav.contact}
                   </a>
+                </div>
+              </div>
+              {/* Service areas column */}
+              <div className="text-center">
+                <h4 className="mb-4 text-lg font-semibold text-amber-100">
+                  {locale === 'fr' ? "Zones d'intervention" : 'Service areas'}
+                </h4>
+                <div className="space-y-2">
+                  <button
+                    type="button"
+                    aria-label={locale === 'fr' ? "Ouvrir la modale Annecy" : 'Open Annecy modal'}
+                    className="block w-full text-center text-amber-200 hover:text-white transition-colors duration-300"
+                    onClick={() => setCityModal({ open: true, city: 'annecy' })}
+                  >
+                    {locale === 'fr' ? 'Annecy' : 'Annecy'}
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={locale === 'fr' ? "Ouvrir la modale Aravis" : 'Open Aravis modal'}
+                    className="block w-full text-center text-amber-200 hover:text-white transition-colors duration-300"
+                    onClick={() => setCityModal({ open: true, city: 'aravis' })}
+                  >
+                    {locale === 'fr' ? 'Aravis' : 'Aravis'}
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={locale === 'fr' ? "Ouvrir la modale Genève" : 'Open Geneva modal'}
+                    className="block w-full text-center text-amber-200 hover:text-white transition-colors duration-300"
+                    onClick={() => setCityModal({ open: true, city: 'geneva' })}
+                  >
+                    {locale === 'fr' ? 'Genève' : 'Geneva'}
+                  </button>
                 </div>
               </div>
               <div className="text-center md:text-right">
@@ -434,6 +467,79 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
             </div>
           </div>
         </footer>
+        {/* City modal */}
+        {cityModal.open && (
+          <div role="dialog" aria-modal="true" className="fixed inset-0 z-50">
+            <div className="absolute inset-0 bg-black/50" onClick={() => setCityModal({ open: false, city: null })} />
+            <div className="relative z-50 mx-auto max-w-lg mt-24 rounded-xl bg-amber-50 border border-amber-200 shadow-xl p-6">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-semibold">
+                  {cityModal.city === 'annecy' && (locale === 'fr' ? 'Annecy' : 'Annecy')}
+                  {cityModal.city === 'aravis' && (locale === 'fr' ? 'Aravis' : 'Aravis')}
+                  {cityModal.city === 'geneva' && (locale === 'fr' ? 'Genève' : 'Geneva')}
+                </h3>
+                <button
+                  type="button"
+                  className="text-neutral-600 hover:text-black"
+                  onClick={() => setCityModal({ open: false, city: null })}
+                  aria-label={locale === 'fr' ? 'Fermer la fenêtre' : 'Close dialog'}
+                >
+                  ×
+                </button>
+              </div>
+              <div className="mt-4 space-y-3 text-neutral-800">
+                {cityModal.city === 'annecy' && (
+                  <>
+                    <p>{locale === 'fr' ? "Sites sur‑mesure pour les entreprises d’Annecy et du Grand Annecy." : 'Tailor‑made websites for businesses in Annecy and Grand Annecy.'}</p>
+                    <p>{locale === 'fr' ? 'Design soigné, performance au top et SEO local qui convertit.' : 'Polished design, top performance and local SEO that converts.'}</p>
+                  </>
+                )}
+                {cityModal.city === 'aravis' && (
+                  <>
+                    <p>{locale === 'fr' ? 'Des sites qui respirent la montagne : Thônes, La Clusaz, Le Grand‑Bornand, Manigod, Saint‑Jean‑de‑Sixt.' : 'Websites shaped by the mountains: Thônes, La Clusaz, Le Grand‑Bornand, Manigod, Saint‑Jean‑de‑Sixt.'}</p>
+                    <p>{locale === 'fr' ? 'Réservation en ligne, vitrines léchées et SEO local sans prise de tête.' : 'Online booking, sharp showcases and hassle‑free local SEO.'}</p>
+                  </>
+                )}
+                {cityModal.city === 'geneva' && (
+                  <>
+                    <p>{locale === 'fr' ? 'Projets francophones à Genève et alentours.' : 'Francophone projects in Geneva and surrounding area.'}</p>
+                    <p>{locale === 'fr' ? 'Performance, e‑commerce et SEO au standard international.' : 'Performance, e‑commerce and SEO to international standards.'}</p>
+                  </>
+                )}
+              </div>
+              <div className="mt-6 flex justify-end gap-3">
+                <button
+                  type="button"
+                  className="px-4 py-2 rounded-md border border-neutral-300 text-neutral-700 hover:bg-neutral-100"
+                  onClick={() => setCityModal({ open: false, city: null })}
+                >
+                  {locale === 'fr' ? 'Fermer' : 'Close'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCityModal({ open: false, city: null });
+                    const section = document.getElementById('contact');
+                    if (section) {
+                      try {
+                        section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      } catch {
+                        const y = Math.max(0, section.offsetTop - 80);
+                        window.scrollTo(0, y);
+                      }
+                    }
+                    setTimeout(() => {
+                      window.dispatchEvent(new Event('hmw-open-callback'));
+                    }, 350);
+                  }}
+                  className="px-4 py-2 rounded-md bg-amber-600 text-white hover:bg-amber-700"
+                >
+                  {locale === 'fr' ? 'Demander un devis' : 'Request a quote'}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
     </LazyMotion>
