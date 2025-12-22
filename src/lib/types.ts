@@ -48,6 +48,10 @@ export interface FooterMessages {
   description: string;
   contact: string;
   rights: string;
+  serviceAreas: string;
+  openModalAnnecy: string;
+  openModalAravis: string;
+  openModalGeneva: string;
 }
 
 export interface NavMessages {
