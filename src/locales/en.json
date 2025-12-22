@@ -43,7 +43,11 @@
     "brand": "Hakuna Mataweb - Web with no worries",
     "description": "Tailor-made, fast and high-performance websites for your business in Annecy, the Aravis and Geneva.",
     "contact": "Contact",
-    "rights": "Made with passion by Hakuna Mataweb © 2025. All rights reserved."
+    "rights": "Made with passion by Hakuna Mataweb © 2025. All rights reserved.",
+    "serviceAreas": "Service areas",
+    "openModalAnnecy": "Open Annecy modal",
+    "openModalAravis": "Open Aravis modal",
+    "openModalGeneva": "Open Geneva modal"
   },
   "nav": {
     "about": "About",

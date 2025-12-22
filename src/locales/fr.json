@@ -43,7 +43,11 @@
     "brand": "Hakuna Mataweb - le web sans souci",
     "description": "Création de sites web sur-mesure, rapides et performants pour votre entreprise à Annecy, dans les Aravis et à Genève.",
     "contact": "Contact",
-    "rights": "Fait avec passion par Hakuna Mataweb © 2025. Tous droits réservés."
+    "rights": "Fait avec passion par Hakuna Mataweb © 2025. Tous droits réservés.",
+    "serviceAreas": "Zones d'intervention",
+    "openModalAnnecy": "Ouvrir la modale Annecy",
+    "openModalAravis": "Ouvrir la modale Aravis",
+    "openModalGeneva": "Ouvrir la modale Genève"
   },
   "nav": {
     "about": "À propos",

@@ -354,28 +354,28 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
               {/* Service areas column */}
               <div className="text-center">
                 <h4 className="mb-4 text-lg font-semibold text-amber-100">
-                  {locale === 'fr' ? "Zones d'intervention" : 'Service areas'}
+                  {messages.footer.serviceAreas}
                 </h4>
                 <div className="space-y-2">
                   <button
                     type="button"
-                    aria-label={locale === 'fr' ? "Ouvrir la modale Annecy" : 'Open Annecy modal'}
+                    aria-label={messages.footer.openModalAnnecy}
                     className="block w-full text-center text-amber-200 hover:text-white transition-colors duration-300"
                     onClick={() => setCityModal({ open: true, city: 'annecy' })}
                   >
-                    {locale === 'fr' ? 'Annecy' : 'Annecy'}
+                    Annecy
                   </button>
                   <button
                     type="button"
-                    aria-label={locale === 'fr' ? "Ouvrir la modale Aravis" : 'Open Aravis modal'}
+                    aria-label={messages.footer.openModalAravis}
                     className="block w-full text-center text-amber-200 hover:text-white transition-colors duration-300"
                     onClick={() => setCityModal({ open: true, city: 'aravis' })}
                   >
-                    {locale === 'fr' ? 'Aravis' : 'Aravis'}
+                    Aravis
                   </button>
                   <button
                     type="button"
-                    aria-label={locale === 'fr' ? "Ouvrir la modale Genève" : 'Open Geneva modal'}
+                    aria-label={messages.footer.openModalGeneva}
                     className="block w-full text-center text-amber-200 hover:text-white transition-colors duration-300"
                     onClick={() => setCityModal({ open: true, city: 'geneva' })}
                   >
