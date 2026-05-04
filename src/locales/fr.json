@@ -9,11 +9,11 @@
   },
   "explore": {
     "heading": "Explorer mes compétences",
-    "paragraph": "Je vous propose une démo interactive pour vous montrer concrètement ce que je peux réaliser : des sites rapides, un design soigné et une meilleure visibilité. Parcourez les exemples et testez les fonctionnalités en direct pour voir ce qui convient le mieux à votre projet."
+    "paragraph": "Entrez dans un playground visuel pour tester des effets, des transitions et des interactions qui donnent tout de suite le ton d'un site plus marquant."
   },
   "buttons": {
-    "demo": "Voir la démo",
-    "explore_demo": "Explore ce que je sais faire",
+    "demo": "Voir le playground",
+    "explore_demo": "Entrer dans le playground",
     "see_creations": "Voir mes réalisations",
     "contact": "Contactez-moi"
   },
@@ -62,7 +62,7 @@
     "explorer": {
       "label": "Explorer",
       "ctaLabel": "Nos compétences en action",
-      "ctaDescription": "Découvrez nos compétences à travers une démo interactive."
+      "ctaDescription": "Découvrez un playground d'effets et d'interactions pensé pour donner envie."
     },
     "about": {
       "label": "À propos",

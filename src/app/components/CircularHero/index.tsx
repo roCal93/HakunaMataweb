@@ -44,6 +44,9 @@ export function CircularHero({ messages }: CircularHeroProps) {
 
   // Refs for intervals and timeouts
   const closeTimeoutRef = useRef<number | null>(null);
+  const lastOpenedQuadrantRef = useRef<Quadrant | null>(null);
+  const lastOpenedAtRef = useRef(0);
+  const openingLockUntilRef = useRef(0);
   // (kept) close timeout for overlay closing
 
   // Refs for DOM elements
@@ -224,10 +227,51 @@ export function CircularHero({ messages }: CircularHeroProps) {
     return () => window.removeEventListener("scroll", handleSectionScroll);
   }, []);
 
+  const cancelPendingClose = useCallback(() => {
+    if (closeTimeoutRef.current) {
+      window.clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  }, []);
+
+  const scheduleOverlayClose = useCallback(() => {
+    cancelPendingClose();
+    closeTimeoutRef.current = window.setTimeout(
+      () => setActiveQuadrant(null),
+      TIMEOUTS.OVERLAY_CLOSE
+    );
+  }, [cancelPendingClose]);
+
+  const openQuadrant = useCallback((quadrant: Quadrant) => {
+    const now = Date.now();
+    const openingLockMs = reduceMotion ? 0 : Math.round(ANIMATION_DURATIONS.OVERLAY_SCALE * 1000) + 200;
+
+    if (
+      activeQuadrant === quadrant ||
+      (lastOpenedQuadrantRef.current === quadrant && now - lastOpenedAtRef.current < 280)
+    ) {
+      cancelPendingClose();
+      return;
+    }
+
+    if (activeQuadrant !== null && now < openingLockUntilRef.current) {
+      cancelPendingClose();
+      return;
+    }
+
+    cancelPendingClose();
+    lastOpenedQuadrantRef.current = quadrant;
+    lastOpenedAtRef.current = now;
+    openingLockUntilRef.current = now + openingLockMs;
+    setActiveQuadrant(quadrant);
+  }, [activeQuadrant, cancelPendingClose, reduceMotion]);
+
   // Handle label mouse enter
   const handleLabelMouseEnter = useCallback(
     (event: MouseEvent<HTMLAnchorElement>, id: Quadrant) => {
       if (!outerCircleRef.current || !innerCircleRef.current) return;
+
+      cancelPendingClose();
 
       const outerRect = outerCircleRef.current.getBoundingClientRect();
       const innerRect = innerCircleRef.current.getBoundingClientRect();
@@ -246,10 +290,10 @@ export function CircularHero({ messages }: CircularHeroProps) {
 
       if (quadrant !== id) return;
 
-      setActiveQuadrant(id);
+      openQuadrant(id);
       pauseAutoRotation();
     },
-    [rotation, pauseAutoRotation]
+    [cancelPendingClose, openQuadrant, rotation, pauseAutoRotation]
   );
 
   // Handle hero mouse move
@@ -257,6 +301,7 @@ export function CircularHero({ messages }: CircularHeroProps) {
     (event: MouseEvent<HTMLElement>) => {
       if (!outerCircleRef.current || !innerCircleRef.current) return;
       if (animateIn !== 'none') return;
+      if (!isCompact && mobileScale === 1 && showOverlays) return;
 
       const outerRect = outerCircleRef.current.getBoundingClientRect();
       const innerRect = innerCircleRef.current.getBoundingClientRect();
@@ -279,7 +324,7 @@ export function CircularHero({ messages }: CircularHeroProps) {
         pauseAutoRotation();
       }
     },
-    [animateIn, activeQuadrant, rotation, pauseAutoRotation]
+    [animateIn, activeQuadrant, isCompact, mobileScale, rotation, pauseAutoRotation, showOverlays]
   );
 
   // Handle click on outer circle
@@ -370,36 +415,67 @@ export function CircularHero({ messages }: CircularHeroProps) {
 
   // Handle overlay mouse enter
   const handleOverlayMouseEnter = useCallback(() => {
-    if (closeTimeoutRef.current) {
-      window.clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
+    cancelPendingClose();
     pauseAutoRotation();
-  }, [pauseAutoRotation]);
+  }, [cancelPendingClose, pauseAutoRotation]);
 
   // Handle overlay mouse leave
   const handleOverlayMouseLeave = useCallback(() => {
-    closeTimeoutRef.current = window.setTimeout(
-      () => setActiveQuadrant(null),
-      TIMEOUTS.OVERLAY_CLOSE
-    );
+    scheduleOverlayClose();
     resumeAutoRotation();
-  }, [resumeAutoRotation]);
+  }, [resumeAutoRotation, scheduleOverlayClose]);
 
   // Handle label focus
   const handleLabelFocus = useCallback(
     (id: Quadrant) => {
-      setActiveQuadrant(id);
+      openQuadrant(id);
       pauseAutoRotation();
     },
-    [pauseAutoRotation]
+    [openQuadrant, pauseAutoRotation]
   );
 
   // Handle label blur
   const handleLabelBlur = useCallback(() => {
-    setActiveQuadrant(null);
+    scheduleOverlayClose();
     resumeAutoRotation();
-  }, [resumeAutoRotation]);
+  }, [resumeAutoRotation, scheduleOverlayClose]);
+
+  useEffect(() => {
+    if (!activeQuadrant) return;
+    if (isCompact || mobileScale !== 1 || !showOverlays || animateIn !== 'none') return;
+
+    const handleWindowMouseMove = (event: globalThis.MouseEvent) => {
+      const isRightSide = event.clientX >= window.innerWidth / 2;
+      const isBottomSide = event.clientY >= window.innerHeight / 2;
+
+      const hoveredQuadrant: Quadrant = isRightSide
+        ? isBottomSide
+          ? 'about'
+          : 'explorer'
+        : isBottomSide
+          ? 'contact'
+          : 'creations';
+
+      if (hoveredQuadrant === activeQuadrant) {
+        cancelPendingClose();
+        return;
+      }
+
+      scheduleOverlayClose();
+    };
+
+    const handleWindowMouseLeave = () => {
+      scheduleOverlayClose();
+    };
+
+    window.addEventListener('mousemove', handleWindowMouseMove, { passive: true });
+    window.addEventListener('mouseleave', handleWindowMouseLeave);
+
+    return () => {
+      window.removeEventListener('mousemove', handleWindowMouseMove);
+      window.removeEventListener('mouseleave', handleWindowMouseLeave);
+    };
+  }, [activeQuadrant, animateIn, cancelPendingClose, isCompact, mobileScale, scheduleOverlayClose, showOverlays]);
 
   const compactTranslation =
     viewportWidth !== null && viewportWidth < BREAKPOINTS.MOBILE ? '-10rem' : '-5rem';
@@ -412,15 +488,15 @@ export function CircularHero({ messages }: CircularHeroProps) {
       {!isCompact && mobileScale === 1 && showOverlays && animateIn === 'none' && (
         <>
           {/* Invisible hover zones for each quadrant */}
-          <div className="fixed inset-0 z-30 pointer-events-auto">
+          <div className={`fixed inset-0 z-30 ${currentQuadrant ? 'pointer-events-none' : 'pointer-events-auto'}`}>
             <div
               className="absolute top-0 right-0 h-1/2 w-1/2"
               onMouseEnter={() => {
-                setActiveQuadrant('explorer');
+                openQuadrant('explorer');
                 pauseAutoRotation();
               }}
               onMouseLeave={() => {
-                setActiveQuadrant(null);
+                scheduleOverlayClose();
                 resumeAutoRotation();
               }}
             />
@@ -428,11 +504,11 @@ export function CircularHero({ messages }: CircularHeroProps) {
               className="absolute bottom-0 right-0 w-1/2"
               style={{ height: 'calc(50% - 120px)' }}
               onMouseEnter={() => {
-                setActiveQuadrant('about');
+                openQuadrant('about');
                 pauseAutoRotation();
               }}
               onMouseLeave={() => {
-                setActiveQuadrant(null);
+                scheduleOverlayClose();
                 resumeAutoRotation();
               }}
             />
@@ -440,22 +516,22 @@ export function CircularHero({ messages }: CircularHeroProps) {
               className="absolute bottom-0 left-0 w-1/2"
               style={{ height: 'calc(50% - 120px)' }}
               onMouseEnter={() => {
-                setActiveQuadrant('contact');
+                openQuadrant('contact');
                 pauseAutoRotation();
               }}
               onMouseLeave={() => {
-                setActiveQuadrant(null);
+                scheduleOverlayClose();
                 resumeAutoRotation();
               }}
             />
             <div
               className="absolute top-0 left-0 h-1/2 w-1/2"
               onMouseEnter={() => {
-                setActiveQuadrant('creations');
+                openQuadrant('creations');
                 pauseAutoRotation();
               }}
               onMouseLeave={() => {
-                setActiveQuadrant(null);
+                scheduleOverlayClose();
                 resumeAutoRotation();
               }}
             />
@@ -500,7 +576,7 @@ export function CircularHero({ messages }: CircularHeroProps) {
           onClick={handleClick}
           onLabelMouseEnter={handleLabelMouseEnter}
           onLabelMouseLeave={() => {
-            setActiveQuadrant(null);
+            scheduleOverlayClose();
             resumeAutoRotation();
           }}
           onLabelFocus={handleLabelFocus}

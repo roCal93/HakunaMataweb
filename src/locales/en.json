@@ -9,11 +9,11 @@
   },
   "explore": {
     "heading": "Explore my skills",
-    "paragraph": "I offer an interactive demo to show you exactly what I can build: fast sites, refined design and better visibility. Browse the examples and test features live to see what fits your project best."
+    "paragraph": "Step into a visual playground to test effects, transitions and interactions that instantly make a website feel more memorable."
   },
   "buttons": {
-    "demo": "See demo",
-    "explore_demo": "Explore what I can do",
+    "demo": "See the playground",
+    "explore_demo": "Enter the playground",
     "see_creations": "See my creations",
     "contact": "Contact me"
   },
@@ -62,7 +62,7 @@
     "explorer": {
       "label": "Explore",
       "ctaLabel": "Our skills in action",
-      "ctaDescription": "Discover our skills through an interactive demo."
+      "ctaDescription": "Discover a playground of effects and interactions built to create desire."
     },
     "about": {
       "label": "About",

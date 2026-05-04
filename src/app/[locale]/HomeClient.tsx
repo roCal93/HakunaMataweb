@@ -77,8 +77,8 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
 
   return (
     <LazyMotion features={loadMotionFeatures}>
-      <div className="min-h-screen overflow-x-hidden">
-      <div className="bg-gradient-to-b from-amber-100 to-amber-200">
+      <div className="min-h-screen overflow-x-hidden dark:bg-gray-900">
+      <div className="bg-gradient-to-b from-amber-100 to-amber-200 dark:from-gray-900 dark:to-gray-900">
         <LanguageSwitcher messages={messages} />
         <CircularHero messages={messages} />
       </div>
@@ -96,14 +96,14 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
         <section
           ref={aboutRef}
           id="about"
-          className="px-4 py-20 sm:px-6 lg:px-8 bg-gradient-to-b from-amber-200 to-amber-300"
+          className="px-4 py-20 sm:px-6 lg:px-8 bg-gradient-to-b from-amber-200 to-amber-300 dark:from-gray-900 dark:to-gray-900"
         >
           <div className="mx-auto max-w-7xl text-center">
-            <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-6xl">
+            <h2 className="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100 md:text-6xl">
               {messages.home.title}
               <div className="text-amber-600">{messages.home.subtitle}</div>
             </h2>
-            <p className="mx-auto my-8 max-w-3xl text-xl text-gray-600">
+            <p className="mx-auto my-8 max-w-3xl text-xl text-gray-600 dark:text-gray-300">
               {messages.about.paragraph}
             </p>
             {AboutCardsComponent ? (
@@ -140,7 +140,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
             </div>
           </div>
         </section>
-        <section id="explorer" className="bg-gradient-to-b from-amber-300 to-amber-400 py-20 relative">
+        <section id="explorer" className="bg-gradient-to-b from-amber-300 to-amber-400 dark:from-gray-900 dark:to-gray-900 py-20 relative">
           <m.div
             className="absolute inset-0 flex justify-center items-start pt-20 pointer-events-none"
             initial={shouldReduceMotion ? {} : { opacity: 0 }}
@@ -167,14 +167,14 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                 animate={shouldReduceMotion ? {} : (isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 })}
                 transition={shouldReduceMotion ? {} : { duration: 0.8, delay: 0.4 }}
               >
-                <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">{messages.explore.heading}</h2>
+                <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100 md:text-4xl">{messages.explore.heading}</h2>
               </m.div>
               <m.div
                 initial={shouldReduceMotion ? {} : { opacity: 0, x: -100 }}
                 animate={shouldReduceMotion ? {} : (isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 })}
                 transition={shouldReduceMotion ? {} : { duration: 0.8, delay: 0.7 }}
               >
-                <p className="mx-auto max-w-2xl text-xl text-gray-600">
+                <p className="mx-auto max-w-2xl text-xl text-gray-600 dark:text-gray-300">
                   {messages.explore.paragraph}
                 </p>
               </m.div>
@@ -193,7 +193,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
             </m.div>
           </div>
         </section>
-        <section id="creations" className="bg-gradient-to-b from-amber-400 to-amber-500 py-20">
+        <section id="creations" className="bg-gradient-to-b from-amber-400 to-amber-500 dark:from-gray-900 dark:to-gray-900 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <m.div
               ref={creationsRef}
@@ -201,8 +201,8 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
               transition={shouldReduceMotion ? {} : { duration: 0.8 }}
             >
               <div className="mb-16 text-center">
-                <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">{messages.creations.heading}</h2>
-                <p className="mx-auto max-w-2xl text-xl text-gray-600">
+                <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100 md:text-4xl">{messages.creations.heading}</h2>
+                <p className="mx-auto max-w-2xl text-xl text-gray-600 dark:text-gray-300">
                   {messages.creations.paragraph}
                 </p>
               </div>
@@ -217,7 +217,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                   href="https://site-vitrine.hakunamataweb.fr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden rounded-lg bg-white shadow-lg transition-transform hover:scale-105"
+                  className="overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-lg transition-transform hover:scale-105"
                 >
                   <div className="h-48 relative">
                     <Image
@@ -229,11 +229,11 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                       loading="lazy"
                     />
                   </div>
-                  <div className="p-6 bg-amber-100">
-                    <h3 className="mb-2 text-xl font-semibold text-gray-900">
+                  <div className="p-6 bg-amber-100 dark:bg-gray-700">
+                    <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-gray-100">
                       {messages.cards.vitrine.title}
                     </h3>
-                    <p className="text-gray-600">{messages.cards.vitrine.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300">{messages.cards.vitrine.description}</p>
                   </div>
                 </a>
 
@@ -241,7 +241,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                   href="https://reservation-chalet.hakunamataweb.fr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden rounded-lg bg-white shadow-lg transition-transform hover:scale-105"
+                  className="overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-lg transition-transform hover:scale-105"
                 >
                   <div className="h-48 relative">
                     <Image
@@ -252,11 +252,11 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                       className="object-cover"
                     />
                   </div>
-                  <div className="p-6 bg-amber-100">
-                    <h3 className="mb-2 text-xl font-semibold text-gray-900">
+                  <div className="p-6 bg-amber-100 dark:bg-gray-700">
+                    <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-gray-100">
                       {messages.cards.chalet.title}
                     </h3>
-                    <p className="text-gray-600">{messages.cards.chalet.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300">{messages.cards.chalet.description}</p>
                   </div>
                 </a>
 
@@ -264,7 +264,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                   href="https://artisan-boutique.hakunamataweb.fr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden rounded-lg bg-white shadow-lg transition-transform hover:scale-105"
+                  className="overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-lg transition-transform hover:scale-105"
                 >
                   <div className="h-48 relative">
                     <Image
@@ -275,18 +275,18 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                       className="object-cover"
                     />
                   </div>
-                  <div className="p-6 bg-amber-100">
-                    <h3 className="mb-2 text-xl font-semibold text-gray-900">
+                  <div className="p-6 bg-amber-100 dark:bg-gray-700">
+                    <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-gray-100">
                       {messages.cards.artisan.title}
                     </h3>
-                    <p className="text-gray-600">{messages.cards.artisan.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300">{messages.cards.artisan.description}</p>
                   </div>
                 </a>
               </m.div>
             </m.div>
           </div>
         </section>
-        <section id="contact" className="bg-gradient-to-b from-amber-500 to-amber-600 py-20">
+        <section id="contact" className="bg-gradient-to-b from-amber-500 to-amber-600 dark:from-gray-900 dark:to-gray-900 py-20">
           <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <m.div
               ref={contactRef}
@@ -324,7 +324,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
           </div>
         </section>
 
-        <footer className="bg-gradient-to-b from-amber-600 to-amber-700 text-white relative overflow-hidden">
+        <footer className="bg-gradient-to-b from-amber-600 to-amber-700 dark:from-gray-900 dark:to-gray-900 text-white relative overflow-hidden">
           <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="text-center md:text-left">
@@ -471,7 +471,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
         {cityModal.open && (
           <div role="dialog" aria-modal="true" className="fixed inset-0 z-50">
             <div className="absolute inset-0 bg-black/50" onClick={() => setCityModal({ open: false, city: null })} />
-            <div className="relative z-50 mx-auto max-w-lg mt-24 rounded-xl bg-amber-50 border border-amber-200 shadow-xl p-6">
+            <div className="relative z-50 mx-auto max-w-lg mt-24 rounded-xl bg-amber-50 dark:bg-gray-800 border border-amber-200 dark:border-gray-700 shadow-xl p-6">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-semibold">
                   {cityModal.city === 'annecy' && (locale === 'fr' ? 'Annecy' : 'Annecy')}
@@ -570,10 +570,10 @@ function AboutCardsFallback({ messages }: { messages: Messages }) {
       {fallbackCards.map((card) => (
         <div
           key={card.key}
-          className="rounded-3xl bg-white p-8 shadow-lg border border-amber-100"
+          className="rounded-3xl bg-white dark:bg-gray-800 p-8 shadow-lg border border-amber-100 dark:border-gray-700"
           aria-label={card.alt}
         >
-          <p className="text-lg text-gray-700">{card.text}</p>
+          <p className="text-lg text-gray-700 dark:text-gray-300">{card.text}</p>
         </div>
       ))}
     </div>

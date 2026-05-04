@@ -38,7 +38,7 @@ export function QuadrantOverlay({
           transition={{ duration: 0.2 }}
         >
           <m.div
-            className={`absolute ${QUADRANT_AREA_CLASSES[currentQuadrant]} flex h-1/2 w-1/2 items-center justify-center bg-amber-50/90 p-16 pt-20 shadow-2xl backdrop-blur-xl overflow-hidden`}
+            className={`pointer-events-auto absolute ${QUADRANT_AREA_CLASSES[currentQuadrant]} flex h-1/2 w-1/2 items-center justify-center overflow-hidden bg-amber-50/90 p-16 pt-20 shadow-2xl backdrop-blur-xl`}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
