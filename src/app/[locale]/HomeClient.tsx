@@ -201,8 +201,11 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
               transition={shouldReduceMotion ? {} : { duration: 0.8 }}
             >
               <div className="mb-16 text-center">
+                <div className="mb-4 text-xs font-semibold uppercase tracking-[0.32em] text-amber-800/80 dark:text-amber-200/80">
+                  {locale === 'fr' ? 'Portfolio clients' : 'Client portfolio'}
+                </div>
                 <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100 md:text-4xl">{messages.creations.heading}</h2>
-                <p className="mx-auto max-w-2xl text-xl text-gray-600 dark:text-gray-300">
+                <p className="mx-auto max-w-2xl text-lg text-gray-700 dark:text-gray-300 md:text-xl">
                   {messages.creations.paragraph}
                 </p>
               </div>
@@ -214,72 +217,108 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                 className="grid gap-8 md:grid-cols-3"
               >
                 <a
-                  href="https://site-vitrine.hakunamataweb.fr"
+                  href="https://www.amandatraduction.com/fr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-lg transition-transform hover:scale-105"
+                  className="group overflow-hidden rounded-[28px] border border-white/55 bg-[linear-gradient(180deg,rgba(255,252,245,0.95),rgba(255,244,214,0.94))] shadow-[0_24px_60px_rgba(120,53,15,0.16)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_80px_rgba(120,53,15,0.22)] dark:border-gray-700 dark:bg-gray-800"
                 >
-                  <div className="h-48 relative">
+                  <div className="relative aspect-[3/2] overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.95),rgba(255,247,237,0.72)_55%,rgba(251,191,36,0.18)_100%)]">
+                    <div className="absolute left-5 top-5 z-10 rounded-full border border-amber-300/50 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-900/75 backdrop-blur-sm">
+                      {locale === 'fr' ? 'Site vitrine' : 'Showcase site'}
+                    </div>
                     <Image
-                      src="https://picsum.photos/400/192?random=1"
+                      src="/images/AmandaTraduction.png"
                       alt={messages.cards.vitrine.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 400px"
-                      className="object-cover"
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                       loading="lazy"
                     />
                   </div>
-                  <div className="p-6 bg-amber-100 dark:bg-gray-700">
-                    <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-gray-100">
-                      {messages.cards.vitrine.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">{messages.cards.vitrine.description}</p>
+                  <div className="space-y-4 p-6">
+                    <div>
+                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.26em] text-amber-800/70 dark:text-amber-200/70">
+                        Amanda Traduction
+                      </p>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                        {messages.cards.vitrine.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm leading-7 text-gray-700 dark:text-gray-300">{messages.cards.vitrine.description}</p>
+                    <div className="flex items-center justify-between border-t border-amber-900/10 pt-4 text-sm font-semibold text-amber-900 dark:border-white/10 dark:text-amber-100">
+                      <span>{locale === 'fr' ? 'Visiter le site' : 'Visit website'}</span>
+                      <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+                    </div>
                   </div>
                 </a>
 
                 <a
-                  href="https://reservation-chalet.hakunamataweb.fr"
+                  href="https://www.vivo-restaurant.site/fr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-lg transition-transform hover:scale-105"
+                  className="group overflow-hidden rounded-[28px] border border-white/55 bg-[linear-gradient(180deg,rgba(255,252,245,0.95),rgba(255,244,214,0.94))] shadow-[0_24px_60px_rgba(120,53,15,0.16)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_80px_rgba(120,53,15,0.22)] dark:border-gray-700 dark:bg-gray-800"
                 >
-                  <div className="h-48 relative">
+                  <div className="relative aspect-[3/2] overflow-hidden bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.84),rgba(255,248,220,0.42)_48%,rgba(22,101,52,0.14)_100%)]">
+                    <div className="absolute left-5 top-5 z-10 rounded-full border border-emerald-700/20 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-900/75 backdrop-blur-sm">
+                      {locale === 'fr' ? 'Réservation' : 'Booking'}
+                    </div>
                     <Image
-                      src="https://picsum.photos/400/192?random=2"
+                      src="/images/Vivo.png"
                       alt={messages.cards.chalet.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 400px"
-                      className="object-cover"
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
-                  <div className="p-6 bg-amber-100 dark:bg-gray-700">
-                    <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-gray-100">
-                      {messages.cards.chalet.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">{messages.cards.chalet.description}</p>
+                  <div className="space-y-4 p-6">
+                    <div>
+                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.26em] text-amber-800/70 dark:text-amber-200/70">
+                        Vivo Restaurant
+                      </p>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                        {messages.cards.chalet.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm leading-7 text-gray-700 dark:text-gray-300">{messages.cards.chalet.description}</p>
+                    <div className="flex items-center justify-between border-t border-amber-900/10 pt-4 text-sm font-semibold text-amber-900 dark:border-white/10 dark:text-amber-100">
+                      <span>{locale === 'fr' ? 'Visiter le site' : 'Visit website'}</span>
+                      <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+                    </div>
                   </div>
                 </a>
 
                 <a
-                  href="https://artisan-boutique.hakunamataweb.fr"
+                  href="https://www.lamontredemongrandpere.com/fr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-lg transition-transform hover:scale-105"
+                  className="group overflow-hidden rounded-[28px] border border-white/55 bg-[linear-gradient(180deg,rgba(255,252,245,0.95),rgba(255,244,214,0.94))] shadow-[0_24px_60px_rgba(120,53,15,0.16)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_80px_rgba(120,53,15,0.22)] dark:border-gray-700 dark:bg-gray-800"
                 >
-                  <div className="h-48 relative">
+                  <div className="relative aspect-[3/2] overflow-hidden bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.94),rgba(248,250,252,0.78)_55%,rgba(120,113,108,0.16)_100%)]">
+                    <div className="absolute left-5 top-5 z-10 rounded-full border border-stone-400/30 bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-800/80 backdrop-blur-sm">
+                      {locale === 'fr' ? 'E-commerce' : 'E-commerce'}
+                    </div>
                     <Image
-                      src="https://picsum.photos/400/192?random=3"
+                      src="/images/LaMontreDeMonGrandPere.png"
                       alt={messages.cards.artisan.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 400px"
-                      className="object-cover"
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
-                  <div className="p-6 bg-amber-100 dark:bg-gray-700">
-                    <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-gray-100">
-                      {messages.cards.artisan.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">{messages.cards.artisan.description}</p>
+                  <div className="space-y-4 p-6">
+                    <div>
+                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.26em] text-amber-800/70 dark:text-amber-200/70">
+                        La Montre de mon Grand-Père
+                      </p>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                        {messages.cards.artisan.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm leading-7 text-gray-700 dark:text-gray-300">{messages.cards.artisan.description}</p>
+                    <div className="flex items-center justify-between border-t border-amber-900/10 pt-4 text-sm font-semibold text-amber-900 dark:border-white/10 dark:text-amber-100">
+                      <span>{locale === 'fr' ? 'Visiter le site' : 'Visit website'}</span>
+                      <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+                    </div>
                   </div>
                 </a>
               </m.div>
@@ -304,8 +343,8 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
               <m.p
                 initial={shouldReduceMotion ? {} : { opacity: 0 }}
                 animate={shouldReduceMotion ? {} : (contactInView ? { opacity: 1 } : { opacity: 0 })}
-                transition={shouldReduceMotion ? {} : { duration: contactInView ? 0.8 : 0.4, delay: contactInView ? 0.2 : 0 }}
                 className="mx-auto mb-8 max-w-2xl text-xl text-blue-100"
+                transition={shouldReduceMotion ? {} : { duration: contactInView ? 0.8 : 0.4, delay: contactInView ? 0.2 : 0 }}
               >
                 {messages.contact.paragraph}
               </m.p>

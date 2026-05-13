@@ -23,16 +23,16 @@
   },
   "cards": {
     "vitrine": {
-      "title": "Site Vitrine",
-      "description": "Présentation élégante de votre entreprise avec design moderne."
+      "title": "Amanda Traduction",
+      "description": "Site vitrine multilingue pour présenter des services de traduction avec une image claire et professionnelle."
     },
     "chalet": {
-      "title": "Site de Réservation de Chalets",
-      "description": "Plateforme de réservation en ligne pour chalets avec calendrier intégré."
+      "title": "Vivo Restaurant",
+      "description": "Site de restaurant pensé pour valoriser la carte, l'ambiance et la réservation en ligne."
     },
     "artisan": {
-      "title": "Site d'Artisan avec Boutique",
-      "description": "Site vitrine et boutique en ligne pour artisans avec gestion des stocks."
+      "title": "La Montre de mon Grand-Père",
+      "description": "Site e-commerce dédié à la vente de montres, avec une mise en avant soignée des produits et de l'univers de marque."
     }
   },
   "contact": {

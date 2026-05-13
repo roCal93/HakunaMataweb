@@ -23,16 +23,16 @@
   },
   "cards": {
     "vitrine": {
-      "title": "Showcase Website",
-      "description": "A polished presentation website for your business with a modern design."
+      "title": "Amanda Traduction",
+      "description": "A multilingual showcase website designed to present translation services with a clear and professional image."
     },
     "chalet": {
-      "title": "Chalet Reservation Site",
-      "description": "An online booking platform for chalets with an integrated calendar."
+      "title": "Vivo Restaurant",
+      "description": "A restaurant website built to highlight the menu, atmosphere and online booking experience."
     },
     "artisan": {
-      "title": "Artisan Site with Shop",
-      "description": "Showcase and e-commerce site for artisans with inventory management."
+      "title": "La Montre de mon Grand-Père",
+      "description": "An e-commerce website dedicated to watch sales, with careful product presentation and a strong brand universe."
     }
   },
   "contact": {
