@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const englishUrl = buildAbsoluteUrl('/en');
   const frenchUrl = defaultUrl;
   const openGraphLocale = locale === 'fr' ? 'fr_FR' : 'en_US';
-  const socialImageUrl = buildAbsoluteUrl('/images/logo.jpg');
+  const socialImageUrl = buildAbsoluteUrl('/images/openGraph.jpg');
 
   return {
     metadataBase,
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       images: [
         {
           url: socialImageUrl,
-          alt: 'Hakuna Mataweb logo',
+          alt: 'Hakuna Mataweb Open Graph image',
         },
       ],
       locale: openGraphLocale,
