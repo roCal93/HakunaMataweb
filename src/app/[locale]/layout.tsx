@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const englishUrl = buildAbsoluteUrl('/en');
   const frenchUrl = defaultUrl;
   const openGraphLocale = locale === 'fr' ? 'fr_FR' : 'en_US';
+  const socialImageUrl = buildAbsoluteUrl('/images/logo.jpg');
 
   return {
     metadataBase,
@@ -48,6 +49,12 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       siteName: 'Hakuna Mataweb',
       title,
       description,
+      images: [
+        {
+          url: socialImageUrl,
+          alt: 'Hakuna Mataweb logo',
+        },
+      ],
       locale: openGraphLocale,
       alternateLocale: ['fr_FR', 'en_US'],
     },
@@ -55,6 +62,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       card: 'summary_large_image',
       title,
       description,
+      images: [socialImageUrl],
     },
   };
 }
@@ -70,7 +78,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
     "@type": "LocalBusiness",
     "name": "Hakuna Mataweb",
     "url": siteUrl,
-    "logo": `${siteUrl}/images/logo.png`,
+    "logo": `${siteUrl}/images/logo.jpg`,
     "description": messages.footer.description,
     "areaServed": [
       { "@type": "AdministrativeArea", "name": "Annecy" },
