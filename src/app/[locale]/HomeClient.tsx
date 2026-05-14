@@ -46,6 +46,8 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
   const [shouldRenderContactButton, setShouldRenderContactButton] = useState(false);
   const [AboutCardsComponent, setAboutCardsComponent] = useState<ComponentType<{ messages: Messages }> | null>(null);
   const [cityModal, setCityModal] = useState<{ open: boolean; city: 'annecy' | 'aravis' | 'geneva' | null }>({ open: false, city: null });
+  const currentYear = new Date().getFullYear();
+  const footerText = messages.aria.footerText.replace("{year}", String(currentYear));
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -80,6 +82,13 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
       <div className="min-h-screen overflow-x-hidden dark:bg-gray-900">
       <div className="bg-gradient-to-b from-amber-100 to-amber-200 dark:from-gray-900 dark:to-gray-900">
         <LanguageSwitcher messages={messages} />
+        {messages.home.heroTagline ? (
+          <div className="mx-auto px-6 pb-2 pt-4 text-center sm:pt-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.32em] text-amber-700/85 sm:text-base">
+              {messages.home.heroTagline}
+            </p>
+          </div>
+        ) : null}
         <CircularHero messages={messages} />
       </div>
       {!isMobile && enableTrail && (
@@ -140,7 +149,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
             </div>
           </div>
         </section>
-        <section id="explorer" className="bg-gradient-to-b from-amber-300 to-amber-400 dark:from-gray-900 dark:to-gray-900 py-20 relative">
+        <section id="explorer" className="bg-gradient-to-b from-amber-300 to-amber-400 dark:from-gray-900 dark:to-gray-900 pb-20 pt-28 relative">
           <m.div
             className="absolute inset-0 flex justify-center items-start pt-20 pointer-events-none"
             initial={shouldReduceMotion ? {} : { opacity: 0 }}
@@ -245,6 +254,11 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                       </h3>
                     </div>
                     <p className="text-sm leading-7 text-gray-700 dark:text-gray-300">{messages.cards.vitrine.description}</p>
+                    {messages.cards.vitrine.priceFrom ? (
+                      <p className="text-sm font-semibold text-amber-900 dark:text-amber-100">
+                        {messages.cards.vitrine.priceFrom}
+                      </p>
+                    ) : null}
                     <div className="flex items-center justify-between border-t border-amber-900/10 pt-4 text-sm font-semibold text-amber-900 dark:border-white/10 dark:text-amber-100">
                       <span>{locale === 'fr' ? 'Visiter le site' : 'Visit website'}</span>
                       <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
@@ -280,6 +294,11 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                       </h3>
                     </div>
                     <p className="text-sm leading-7 text-gray-700 dark:text-gray-300">{messages.cards.chalet.description}</p>
+                    {messages.cards.chalet.priceFrom ? (
+                      <p className="text-sm font-semibold text-amber-900 dark:text-amber-100">
+                        {messages.cards.chalet.priceFrom}
+                      </p>
+                    ) : null}
                     <div className="flex items-center justify-between border-t border-amber-900/10 pt-4 text-sm font-semibold text-amber-900 dark:border-white/10 dark:text-amber-100">
                       <span>{locale === 'fr' ? 'Visiter le site' : 'Visit website'}</span>
                       <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
@@ -315,6 +334,11 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                       </h3>
                     </div>
                     <p className="text-sm leading-7 text-gray-700 dark:text-gray-300">{messages.cards.artisan.description}</p>
+                    {messages.cards.artisan.priceFrom ? (
+                      <p className="text-sm font-semibold text-amber-900 dark:text-amber-100">
+                        {messages.cards.artisan.priceFrom}
+                      </p>
+                    ) : null}
                     <div className="flex items-center justify-between border-t border-amber-900/10 pt-4 text-sm font-semibold text-amber-900 dark:border-white/10 dark:text-amber-100">
                       <span>{locale === 'fr' ? 'Visiter le site' : 'Visit website'}</span>
                       <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
@@ -322,6 +346,12 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                   </div>
                 </a>
               </m.div>
+
+              {messages.creations.pricingNote ? (
+                <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-7 text-amber-950/80 dark:text-amber-100/75">
+                  {messages.creations.pricingNote}
+                </p>
+              ) : null}
             </m.div>
           </div>
         </section>
@@ -466,7 +496,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                       </svg>
                     </a>
                     <a
-                      href="https://github.com/romaincalmelet"
+                      href="https://github.com/roCal93"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={messages.aria.github}
@@ -491,7 +521,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                       height={24}
                       className="inline-block align-middle filter-orange"
                     />
-                    {messages.aria.footerText}
+                    {footerText}
                   </span>
                 </p>
                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
@@ -529,20 +559,21 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
               <div className="mt-4 space-y-3 text-neutral-800">
                 {cityModal.city === 'annecy' && (
                   <>
-                    <p>{locale === 'fr' ? "Sites sur‑mesure pour les entreprises d’Annecy et du Grand Annecy." : 'Tailor‑made websites for businesses in Annecy and Grand Annecy.'}</p>
-                    <p>{locale === 'fr' ? 'Design soigné, performance au top et SEO local qui convertit.' : 'Polished design, top performance and local SEO that converts.'}</p>
+                    <p>{locale === 'fr' ? 'Annecy attire chaque année un flux constant de visiteurs, et beaucoup vous cherchent sur leur téléphone avant même d’arriver.' : 'Annecy attracts a steady flow of visitors every year, and many of them look for you on their phone before they even arrive.'}</p>
+                    <p>{locale === 'fr' ? 'Je conçois des sites vitrines, des systèmes de réservation et des boutiques en ligne pour les commerces, hébergements et prestataires du lac qui veulent transformer cette visibilité en clients, été comme hiver.' : 'I design showcase websites, booking systems and online stores for lakeside businesses, accommodations and service providers who want to turn that visibility into customers, in summer and winter alike.'}</p>
                   </>
                 )}
                 {cityModal.city === 'aravis' && (
                   <>
-                    <p>{locale === 'fr' ? 'Des sites qui respirent la montagne : Thônes, La Clusaz, Le Grand‑Bornand, Manigod, Saint‑Jean‑de‑Sixt.' : 'Websites shaped by the mountains: Thônes, La Clusaz, Le Grand‑Bornand, Manigod, Saint‑Jean‑de‑Sixt.'}</p>
-                    <p>{locale === 'fr' ? 'Réservation en ligne, vitrines léchées et SEO local sans prise de tête.' : 'Online booking, sharp showcases and hassle‑free local SEO.'}</p>
+                    <p>{locale === 'fr' ? 'La Clusaz, Le Grand‑Bornand, Manigod : le massif des Aravis attire une clientèle fidèle et exigeante, été comme hiver.' : 'La Clusaz, Le Grand‑Bornand and Manigod: the Aravis massif attracts a loyal and demanding clientele in both summer and winter.'}</p>
+                    <p>{locale === 'fr' ? 'Votre site doit être à la hauteur de la destination.' : 'Your website should match the standard of the destination.'}</p>
+                    <p>{locale === 'fr' ? 'Je conçois des sites sur‑mesure pour les hébergeurs, restaurateurs et artisans du secteur.' : 'I design tailor-made websites for local accommodation providers, restaurateurs and craftspeople.'}</p>
                   </>
                 )}
                 {cityModal.city === 'geneva' && (
                   <>
-                    <p>{locale === 'fr' ? 'Projets francophones à Genève et alentours.' : 'Francophone projects in Geneva and surrounding area.'}</p>
-                    <p>{locale === 'fr' ? 'Performance, e‑commerce et SEO au standard international.' : 'Performance, e‑commerce and SEO to international standards.'}</p>
+                    <p>{locale === 'fr' ? 'Genève attire des clients du monde entier. Votre site est-il prêt à les accueillir ?' : 'Geneva attracts clients from all over the world. Is your website ready to welcome them?'}</p>
+                    <p>{locale === 'fr' ? 'Sites multilingues, design soigné, performances optimisées : je conçois des sites pensés pour les entreprises genevoises qui évoluent dans un environnement international.' : 'Multilingual websites, refined design and optimized performance: I design websites for Geneva-based businesses operating in an international environment.'}</p>
                   </>
                 )}
               </div>

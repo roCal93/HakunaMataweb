@@ -1,49 +1,54 @@
 {
   "home": {
     "title": "Hakuna Mataweb",
-    "subtitle": "le web sans souci"
+    "subtitle": "le web sans souci",
+    "heroTagline": "Sites web sur-mesure"
   },
   "about": {
     "heading": "À propos",
-    "paragraph": "Hakuna Mataweb, votre agence web experte dans la création de sites sur-mesure. Je conçois des solutions digitales uniques, pensées pour s’adapter à chaque besoin et refléter l’identité de mes clients. Ma mission : réaliser des projets qui se démarquent, vous ressemblent et marquent les esprits."
+    "paragraph": "Je conçois des sites web sur-mesure, pensés pour valoriser votre activité, rassurer vos visiteurs et soutenir votre développement."
   },
   "explore": {
-    "heading": "Explorer mes compétences",
-    "paragraph": "Entrez dans un playground visuel pour tester des effets, des transitions et des interactions qui donnent tout de suite le ton d'un site plus marquant."
+    "heading": "Terrain d’exploration",
+    "paragraph": "Un aperçu interactif pour voir comment le rythme, les transitions et les détails visuels peuvent donner plus de caractère à un site."
   },
   "buttons": {
-    "demo": "Voir le playground",
-    "explore_demo": "Entrer dans le playground",
+    "demo": "Entrez dans le terrain d’exploration",
+    "explore_demo": "Terrain d’exploration",
     "see_creations": "Voir mes réalisations",
     "contact": "Contactez-moi"
   },
   "creations": {
     "heading": "Mes Créations",
-    "paragraph": "Découvrez mes projets créatifs et innovants qui illustrent mon savoir-faire"
+    "paragraph": "Quelques réalisations conçues pour des besoins concrets, avec un niveau d'investissement cohérent selon l'ambition du projet.",
+      "pricingNote": "Ces tarifs correspondent à des bases de lancement. Chaque projet est ensuite ajusté selon le contenu, les fonctionnalités et le niveau d'accompagnement attendu."
   },
   "cards": {
     "vitrine": {
       "title": "Amanda Traduction",
-      "description": "Site vitrine multilingue pour présenter des services de traduction avec une image claire et professionnelle."
+      "description": "Site vitrine multilingue pour présenter des services de traduction avec une image claire et professionnelle.",
+        "priceFrom": "À partir de 900 €"
     },
     "chalet": {
       "title": "Vivo Restaurant",
-      "description": "Site de restaurant pensé pour valoriser la carte, l'ambiance et la réservation en ligne."
+      "description": "Site de restaurant pensé pour valoriser la carte, l'ambiance et la réservation en ligne.",
+        "priceFrom": "À partir de 1 500 €"
     },
     "artisan": {
       "title": "La Montre de mon Grand-Père",
-      "description": "Site e-commerce dédié à la vente de montres, avec une mise en avant soignée des produits et de l'univers de marque."
+      "description": "Site e-commerce dédié à la vente de montres, avec une mise en avant soignée des produits et de l'univers de marque.",
+        "priceFrom": "À partir de 2 000 €"
     }
   },
   "contact": {
     "heading": "Prêt à lancer votre projet ?",
-    "paragraph": "Contactez-moi dès aujourd'hui pour discuter de vos besoins et obtenir un devis gratuit."
+    "paragraph": "Parlez-moi de votre projet, de vos objectifs et de votre budget. Je vous fais un premier retour clair sous 24 à 48 h."
   },
   "footer": {
     "brand": "Hakuna Mataweb - le web sans souci",
     "description": "Création de sites web sur-mesure, rapides et performants pour votre entreprise à Annecy, dans les Aravis et à Genève.",
     "contact": "Contact",
-    "rights": "Fait avec passion par Hakuna Mataweb © 2025. Tous droits réservés.",
+    "rights": "Fait avec passion par Hakuna Mataweb © {year}. Tous droits réservés.",
     "serviceAreas": "Zones d'intervention",
     "openModalAnnecy": "Ouvrir la modale Annecy",
     "openModalAravis": "Ouvrir la modale Aravis",
@@ -60,38 +65,38 @@
   },
   "hero": {
     "explorer": {
-      "label": "Explorer",
-      "ctaLabel": "Nos compétences en action",
-      "ctaDescription": "Découvrez un playground d'effets et d'interactions pensé pour donner envie."
+      "label": "Expertise",
+      "ctaLabel": "Voir le terrain d’exploration",
+      "ctaDescription": "Animations, transitions et interactions pensées pour servir l'image de marque, pas faire gadget."
     },
     "about": {
-      "label": "À propos",
-      "ctaLabel": "Découvrez-nous",
-      "ctaDescription": "Découvrez la vision, l’esprit et les valeurs de notre agence"
+      "label": "Agence",
+      "ctaLabel": "Découvrir l'approche",
+      "ctaDescription": "Sites vitrines, réservation et e-commerce conçus sur-mesure pour répondre à des besoins concrets."
     },
     "contact": {
       "label": "Contact",
-      "ctaLabel": "Parler de votre projet",
-      "ctaDescription": "Discutons ensemble de vos objectifs et de la prochaine étape."
+      "ctaLabel": "Demander un devis",
+      "ctaDescription": "On échange pour cadrer votre besoin, votre budget et la bonne solution sans perdre de temps."
     },
     "creations": {
-      "label": "Créations",
-      "ctaLabel": "Voir nos créations",
-      "ctaDescription": "Découvrez nos projets créatifs et innovants."
+      "label": "Références",
+      "ctaLabel": "Voir les projets",
+      "ctaDescription": "Des réalisations pensées pour la crédibilité, la réservation en ligne et la vente."
     }
   },
   "aboutCards": {
     "innovation": {
       "alt": "Ampoule",
-      "text": "L'innovation au service de votre projet."
+      "text": "Des idées claires pour concevoir un site qui se démarque vraiment."
     },
     "solutions": {
       "alt": "Cible",
-      "text": "Des solutions précises et adaptées à vos besoins."
+      "text": "Une solution pensée pour vos objectifs, votre activité et votre manière de travailler."
     },
     "identity": {
       "alt": "Valeur",
-      "text": "Un site qui reflète vos valeurs et votre identité."
+      "text": "Un site pensé pour refléter votre identité et vos valeurs."
     }
   },
   "contactButton": {
@@ -142,7 +147,7 @@
     "sendForm": "Envoyer le formulaire",
     "closeContactMenu": "Fermer le menu de contact",
     "scrollDownAbout": "Faire défiler vers la section À propos",
-    "footerText": "Fait avec passion par Hakuna Mataweb © 2025. Tous droits réservés.",
+    "footerText": "Fait avec passion par Hakuna Mataweb © {year}. Tous droits réservés.",
     "pawPrint": "empreinte de patte",
     "currentLanguage": "Langue actuelle",
     "switchToFrench": "Passer au français",

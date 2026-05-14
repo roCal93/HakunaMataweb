@@ -27,6 +27,10 @@ export default async function PrivacyPage({ params }: { params: { locale: string
     <main className="max-w-3xl mx-auto px-4 py-10 text-amber-900">
       <h1 className="text-3xl font-semibold mb-6">{isFr ? 'Politique de confidentialité' : 'Privacy Policy'}</h1>
 
+      <p className="mb-4 text-sm text-amber-700">
+        {isFr ? 'Dernière mise à jour : 14 mai 2026' : 'Last updated: May 14, 2026'}
+      </p>
+
       <p className="mb-4">
         {isFr
           ? "Cette page explique comment Hakuna Mataweb traite vos données personnelles conformément au RGPD."

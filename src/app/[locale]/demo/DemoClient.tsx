@@ -45,7 +45,7 @@ type DemoCopy = {
 
 const demoCopy: Record<string, DemoCopy> = {
   fr: {
-    eyebrow: 'Playground interactif',
+    eyebrow: 'Terrain d’exploration interactif',
     title: 'Un terrain de jeu qui donne envie avant même le premier brief',
     intro:
       "Cette page ne montre pas seulement des animations : elle montre comment un même contenu peut changer de ton selon la scène, le rythme et l'univers graphique.",
@@ -97,7 +97,7 @@ const demoCopy: Record<string, DemoCopy> = {
     ],
   },
   en: {
-    eyebrow: 'Interactive playground',
+    eyebrow: 'Interactive exploration space',
     title: 'A place to spark interest before the first brief',
     intro:
       'This page is not only about animation. It shows how the same content can feel completely different depending on scene, rhythm and graphic universe.',

@@ -3,6 +3,7 @@
 export interface HomeMessages {
   title: string;
   subtitle: string;
+  heroTagline?: string;
 }
 
 export interface AboutMessages {
@@ -25,11 +26,13 @@ export interface ButtonsMessages {
 export interface CreationsMessages {
   heading: string;
   paragraph: string;
+  pricingNote?: string;
 }
 
 export interface CardMessages {
   title: string;
   description: string;
+  priceFrom?: string;
 }
 
 export interface CardsMessages {

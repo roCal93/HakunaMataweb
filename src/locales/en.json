@@ -1,49 +1,54 @@
 {
   "home": {
     "title": "Hakuna Mataweb",
-    "subtitle": "Web with no worries"
+    "subtitle": "Web with no worries",
+    "heroTagline": "Tailor-made websites"
   },
   "about": {
     "heading": "About",
-    "paragraph": "Hakuna Mataweb, your web agency specialized in building bespoke websites. I design unique digital solutions tailored to every need and reflecting my clients' identity. My mission: create projects that stand out, reflect you, and leave a mark."
+    "paragraph": "I design tailor-made websites built to showcase your business, reassure your visitors and support your growth."
   },
   "explore": {
-    "heading": "Explore my skills",
-    "paragraph": "Step into a visual playground to test effects, transitions and interactions that instantly make a website feel more memorable."
+    "heading": "Exploration space",
+    "paragraph": "An interactive preview of how rhythm, transitions and visual details can give a website more character."
   },
   "buttons": {
-    "demo": "See the playground",
-    "explore_demo": "Enter the playground",
+    "demo": "Enter the exploration space",
+    "explore_demo": "Exploration space",
     "see_creations": "See my creations",
     "contact": "Contact me"
   },
   "creations": {
     "heading": "My Creations",
-    "paragraph": "Discover my creative and innovative projects that showcase my expertise"
+    "paragraph": "A selection of projects built for concrete needs, with an investment level that matches each project's ambition.",
+      "pricingNote": "These prices reflect launch-level starting points. Each project is then adjusted according to content, features and the level of support required."
   },
   "cards": {
     "vitrine": {
       "title": "Amanda Traduction",
-      "description": "A multilingual showcase website designed to present translation services with a clear and professional image."
+      "description": "A multilingual showcase website designed to present translation services with a clear and professional image.",
+        "priceFrom": "Starting at €900"
     },
     "chalet": {
       "title": "Vivo Restaurant",
-      "description": "A restaurant website built to highlight the menu, atmosphere and online booking experience."
+      "description": "A restaurant website built to highlight the menu, atmosphere and online booking experience.",
+        "priceFrom": "Starting at €1,500"
     },
     "artisan": {
       "title": "La Montre de mon Grand-Père",
-      "description": "An e-commerce website dedicated to watch sales, with careful product presentation and a strong brand universe."
+      "description": "An e-commerce website dedicated to watch sales, with careful product presentation and a strong brand universe.",
+        "priceFrom": "Starting at €2,000"
     }
   },
   "contact": {
     "heading": "Ready to launch your project?",
-    "paragraph": "Contact me today to discuss your needs and get a free quote."
+    "paragraph": "Tell me about your project, your goals and your budget. I will get back to you with a clear first response within 24 to 48 hours."
   },
   "footer": {
     "brand": "Hakuna Mataweb - Web with no worries",
     "description": "Tailor-made, fast and high-performance websites for your business in Annecy, the Aravis and Geneva.",
     "contact": "Contact",
-    "rights": "Made with passion by Hakuna Mataweb © 2025. All rights reserved.",
+    "rights": "Made with passion by Hakuna Mataweb © {year}. All rights reserved.",
     "serviceAreas": "Service areas",
     "openModalAnnecy": "Open Annecy modal",
     "openModalAravis": "Open Aravis modal",
@@ -60,38 +65,38 @@
   },
   "hero": {
     "explorer": {
-      "label": "Explore",
-      "ctaLabel": "Our skills in action",
-      "ctaDescription": "Discover a playground of effects and interactions built to create desire."
+      "label": "Expertise",
+      "ctaLabel": "Enter the exploration space",
+      "ctaDescription": "Animations, transitions and interactions designed to support the brand, not feel gimmicky."
     },
     "about": {
-      "label": "About",
-      "ctaLabel": "Discover us",
-      "ctaDescription": "Discover the vision, spirit and values of our agency."
+      "label": "Agency",
+      "ctaLabel": "See the approach",
+      "ctaDescription": "Showcase sites, booking flows and e-commerce experiences designed around real business needs."
     },
     "contact": {
       "label": "Contact",
-      "ctaLabel": "Talk about your project",
-      "ctaDescription": "Let's discuss your objectives and the next step together."
+      "ctaLabel": "Request a quote",
+      "ctaDescription": "We talk through your needs, budget and the right solution without wasting time."
     },
     "creations": {
-      "label": "Creations",
-      "ctaLabel": "See our creations",
-      "ctaDescription": "Discover our creative and innovative projects."
+      "label": "References",
+      "ctaLabel": "See the projects",
+      "ctaDescription": "Selected work built for credibility, online booking and sales."
     }
   },
   "aboutCards": {
     "innovation": {
       "alt": "Bulb",
-      "text": "Innovation at the service of your project."
+      "text": "Clear ideas to shape a website that genuinely stands out."
     },
     "solutions": {
       "alt": "Target",
-      "text": "Precise solutions adapted to your needs."
+      "text": "A solution shaped around your goals, your business and the way you work."
     },
     "identity": {
       "alt": "Value",
-      "text": "A site that reflects your values and identity."
+      "text": "A website designed to reflect your identity and values."
     }
   },
   "contactButton": {
@@ -142,7 +147,7 @@
     "sendForm": "Send the form",
     "closeContactMenu": "Close the contact menu",
     "scrollDownAbout": "Scroll down to About section",
-    "footerText": "Made with passion by Hakuna Mataweb © 2025. All rights reserved.",
+    "footerText": "Made with passion by Hakuna Mataweb © {year}. All rights reserved.",
     "pawPrint": "paw print",
     "currentLanguage": "Current language",
     "switchToFrench": "Switch to French",

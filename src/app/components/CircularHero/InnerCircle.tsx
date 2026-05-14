@@ -42,7 +42,7 @@ export const InnerCircle = forwardRef<HTMLDivElement, InnerCircleProps>(
           whileHover={{ scale: 1.05 }}
           onClick={onClick}
         >
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center pointer-events-auto rounded-full overflow-hidden">
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center pointer-events-auto rounded-full overflow-hidden px-8">
             <h1 className="flex flex-col items-center text-2xl font-semibold text-gray-900">
               <span 
                 className="text-center text-3xl uppercase tracking-[0.20em] text-amber-500 font-bold my-2" 
