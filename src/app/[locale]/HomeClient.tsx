@@ -485,7 +485,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                   </a>
                   <div className="mt-4 flex items-center justify-center md:justify-end space-x-5">
                     <a
-                      href="https://www.linkedin.com/in/romain-calmelet-123456789/"
+                      href="https://www.linkedin.com/company/hakuna-mataweb"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={messages.aria.linkedin}
