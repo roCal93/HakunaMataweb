@@ -30,7 +30,6 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const frenchUrl = defaultUrl;
   const openGraphLocale = locale === 'fr' ? 'fr_FR' : 'en_US';
   const socialImageUrl = buildAbsoluteUrl('/images/openGraph.jpg');
-  const twitterImageUrl = buildAbsoluteUrl('/images/logo.jpg');
 
   return {
     metadataBase,
@@ -64,7 +63,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       card: 'summary_large_image',
       title,
       description,
-      images: [twitterImageUrl],
+      images: [socialImageUrl],
     },
   };
 }
