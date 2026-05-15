@@ -130,6 +130,15 @@ export default async function PrivacyPage({ params }: { params: { locale: string
         </p>
       </section>
 
+        <section className="space-y-3 mb-8">
+          <h2 className="text-xl font-semibold">{isFr ? 'Cookies et traceurs' : 'Cookies and Trackers'}</h2>
+          <p>
+            {isFr
+              ? "Dans son état actuel, ce site ne dépose pas de cookies de suivi, de publicité ou de personnalisation lors de la consultation des pages publiques. La langue est gérée par l'URL (/fr, /en) et non par un cookie de préférence. Si des services impliquant des traceurs non essentiels étaient ajoutés ultérieurement, cette politique et, le cas échéant, le mécanisme de recueil du consentement seraient mis à jour."
+              : "In its current state, this site does not place tracking, advertising, or personalization cookies when public pages are viewed. Language is handled through the URL (/fr, /en) rather than a preference cookie. If services involving non-essential trackers are added later, this policy and, where required, the consent mechanism will be updated accordingly."}
+          </p>
+        </section>
+
       <div className="mt-10">
         <Link className="underline" href={`/${locale}`}>
           {isFr ? 'Retour à l’accueil' : 'Back to home'}

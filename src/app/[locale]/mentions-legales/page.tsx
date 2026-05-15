@@ -112,8 +112,8 @@ export default async function MentionsLegalesPage({ params }: { params: { locale
         <h2 className="text-xl font-semibold">Cookies</h2>
         <p>
           {isFr
-            ? "Ce site n'utilise pas de cookies de suivi ou de publicité. Seuls des cookies strictement nécessaires au fonctionnement technique du site peuvent être utilisés (cookies de session, préférences de langue). Ces cookies techniques ne nécessitent pas votre consentement préalable."
-            : "This site does not use tracking or advertising cookies. Only cookies strictly necessary for the technical operation of the site may be used (session cookies, language preferences). These technical cookies do not require your prior consent."}
+              ? "Dans son état actuel, ce site ne dépose pas de cookies de suivi, de publicité ou de personnalisation lors de la consultation des pages publiques. La langue est gérée par l'URL (/fr, /en) et non par un cookie de préférence. Si des services impliquant des traceurs non essentiels étaient ajoutés ultérieurement (mesure d'audience, contenus embarqués, outils marketing), cette page et, le cas échéant, le mécanisme de recueil du consentement seraient mis à jour."
+              : "In its current state, this site does not place tracking, advertising, or personalization cookies when public pages are viewed. Language is handled through the URL (/fr, /en) rather than a preference cookie. If services involving non-essential trackers are added later (analytics, embedded content, marketing tools), this page and, where required, the consent mechanism will be updated accordingly."}
         </p>
       </section>
 
