@@ -45,6 +45,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       },
     },
     openGraph: {
+      type: 'website',
       url: canonicalUrl,
       siteName: 'Hakuna Mataweb',
       title,
