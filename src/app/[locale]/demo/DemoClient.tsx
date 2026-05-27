@@ -509,7 +509,7 @@ export function DemoClient({ locale }: { locale: string }) {
           </div>
 
           <motion.div
-            className="relative h-[27rem] overflow-hidden rounded-[36px] border border-amber-900/20 bg-[#fff8ea]/72 p-5 shadow-[0_24px_60px_rgba(120,53,15,0.12)] backdrop-blur-sm"
+            className="relative h-[27rem] overflow-hidden rounded-[36px] border border-amber-900/20 bg-[#fff8ea]/90 p-5 shadow-[0_24px_60px_rgba(120,53,15,0.12)]"
             initial={{ opacity: 0, x: 36 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.9 }}
@@ -559,9 +559,9 @@ export function DemoClient({ locale }: { locale: string }) {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
         <motion.div
-          className="mx-auto max-w-6xl overflow-hidden rounded-[36px] border border-amber-900/20 bg-[#fff8ea]/76 p-6 shadow-[0_20px_80px_rgba(120,53,15,0.14)] backdrop-blur-sm lg:p-8"
-          initial={{ opacity: 0, y: 24, filter: 'blur(12px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          className="mx-auto max-w-6xl overflow-hidden rounded-[36px] border border-amber-900/20 bg-[#fff8ea]/92 p-6 shadow-[0_20px_80px_rgba(120,53,15,0.14)] lg:p-8"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.28 }}
           transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -572,8 +572,8 @@ export function DemoClient({ locale }: { locale: string }) {
             {copy.morphTargets.map((target, index) => (
               <motion.div
                 key={target.label}
-                initial={{ opacity: 0, y: 28, filter: 'blur(10px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.12 + index * 0.1 }}
                 onMouseEnter={() => activateCursor(target.mode)}
@@ -687,9 +687,9 @@ export function DemoClient({ locale }: { locale: string }) {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
         <motion.div
-          className="relative isolate mx-auto max-w-6xl overflow-hidden rounded-[34px] border border-amber-900/20 bg-[#fff8ea]/76 p-6 shadow-[0_20px_80px_rgba(120,53,15,0.14)] backdrop-blur-sm lg:p-8"
-          initial={{ opacity: 0, y: 24, filter: 'blur(12px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          className="relative isolate mx-auto max-w-6xl overflow-hidden rounded-[34px] border border-amber-900/20 bg-[#fff8ea]/92 p-6 shadow-[0_20px_80px_rgba(120,53,15,0.14)] lg:p-8"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.28 }}
           transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -980,9 +980,9 @@ export function DemoClient({ locale }: { locale: string }) {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
           <motion.div
-            className="mx-auto max-w-6xl overflow-hidden rounded-[40px] border border-amber-900/20 bg-[#fff8ea]/76 p-6 shadow-[0_30px_80px_rgba(120,53,15,0.14)] backdrop-blur-sm md:p-8"
-            initial={{ opacity: 0, y: 24, filter: 'blur(12px)' }}
-            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            className="mx-auto max-w-6xl overflow-hidden rounded-[40px] border border-amber-900/20 bg-[#fff8ea]/92 p-6 shadow-[0_30px_80px_rgba(120,53,15,0.14)] md:p-8"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.28 }}
             transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
           >
@@ -1220,9 +1220,9 @@ export function DemoClient({ locale }: { locale: string }) {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
         <motion.div
-          className="mx-auto max-w-6xl rounded-[32px] border border-amber-900/20 bg-[#fff8ea]/76 p-6 shadow-[0_20px_60px_rgba(120,53,15,0.12)] backdrop-blur-sm"
-          initial={{ opacity: 0, y: 24, filter: 'blur(12px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          className="mx-auto max-w-6xl rounded-[32px] border border-amber-900/20 bg-[#fff8ea]/92 p-6 shadow-[0_20px_60px_rgba(120,53,15,0.12)]"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.28 }}
           transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -1231,8 +1231,8 @@ export function DemoClient({ locale }: { locale: string }) {
             <div className="mt-8 grid gap-4 rounded-[28px] border border-amber-900/20 bg-white/70 p-4 md:grid-cols-3">
               <motion.div
                 className="rounded-[22px] border border-amber-900/20 bg-[#fffaf0]/76 p-4"
-                initial={{ opacity: 0, y: 24, filter: 'blur(10px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.45 }}
                 transition={{ duration: 0.72, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
               >
@@ -1262,8 +1262,8 @@ export function DemoClient({ locale }: { locale: string }) {
 
               <motion.div
                 className="rounded-[22px] border border-amber-900/20 bg-[#fffaf0]/76 p-4"
-                initial={{ opacity: 0, y: 24, filter: 'blur(10px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.45 }}
                 transition={{ duration: 0.72, ease: [0.16, 1, 0.3, 1], delay: 0.16 }}
               >
@@ -1283,8 +1283,8 @@ export function DemoClient({ locale }: { locale: string }) {
 
               <motion.div
                 className="rounded-[22px] border border-amber-900/20 bg-[#fffaf0]/76 p-4"
-                initial={{ opacity: 0, y: 24, filter: 'blur(10px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.45 }}
                 transition={{ duration: 0.72, ease: [0.16, 1, 0.3, 1], delay: 0.24 }}
               >
@@ -1333,8 +1333,8 @@ export function DemoClient({ locale }: { locale: string }) {
       >
         <motion.div
           className="mx-auto max-w-4xl text-center"
-          initial={{ opacity: 0, y: 24, filter: 'blur(12px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
         >
