@@ -9,6 +9,10 @@ const scriptSrc = [
 ].filter(Boolean).join(' ');
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: __dirname,
+  },
+
   // Optimisations de production
   reactStrictMode: true,
   poweredByHeader: false,
