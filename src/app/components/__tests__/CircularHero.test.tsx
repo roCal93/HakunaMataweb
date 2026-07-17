@@ -1,6 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { CircularHero } from '../CircularHero';
-import { jest } from '@jest/globals';
 import fr from '../../../locales/fr.json';
 
 // Mock des APIs du navigateur
@@ -73,8 +72,8 @@ describe('CircularHero', () => {
 
   it('affiche les labels de navigation des quadrants', () => {
     render(<CircularHero messages={fr} />);
-    expect(screen.getByText('Explorer')).toBeInTheDocument();
     expect(screen.getByText('À propos')).toBeInTheDocument();
+    expect(screen.getByText('Approche')).toBeInTheDocument();
     expect(screen.getByText('Contact')).toBeInTheDocument();
     expect(screen.getByText('Créations')).toBeInTheDocument();
   });
@@ -144,7 +143,7 @@ describe('CircularHero', () => {
   it('gère les événements de souris sur les quadrants', async () => {
     render(<CircularHero messages={fr} />);
 
-    const quadrantLink = screen.getByText('Explorer');
+    const quadrantLink = screen.getByText('À propos');
 
     // Simuler mouseenter
     fireEvent.mouseEnter(quadrantLink);

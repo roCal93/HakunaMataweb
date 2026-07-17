@@ -1,62 +1,63 @@
 {
   "home": {
     "title": "Hakuna Mataweb",
-    "subtitle": "le web sans souci",
-    "heroTagline": "Sites web sur-mesure"
+    "subtitle": "Le web sans souci",
+    "heroTagline": "Sites web sur mesure"
   },
   "about": {
     "heading": "À propos",
-    "paragraph": "Je conçois des sites web sur-mesure, pensés pour valoriser votre activité, rassurer vos visiteurs et soutenir votre développement."
+    "paragraph": "Je conçois des sites web sur mesure, pensés pour mettre en avant et valoriser votre activité."
   },
   "explore": {
-    "heading": "Terrain d’exploration",
-    "paragraph": "Un aperçu interactif pour voir comment le rythme, les transitions et les détails visuels peuvent donner plus de caractère à un site."
+    "heading": "Quelques mots sur moi",
+    "paragraph": "Moi, c’est Romain !\n\nAprès dix années passées dans l’horlogerie, où précision, rigueur et sens du détail faisaient partie de mon quotidien, j’ai décidé de relever un nouveau défi : le développement web, un domaine qui me passionne par ses tâches variées et ses possibilités infinies.\n\nMes efforts de formation et de reconversion se sont concrétisés sous la forme d’Hakuna Mataweb. Et aujourd’hui, je mets ma méticulosité et mes nouvelles compétences à votre service pour valoriser votre activité, quelle qu’elle soit."
   },
   "buttons": {
-    "demo": "Entrez dans le terrain d’exploration",
-    "explore_demo": "Terrain d’exploration",
-    "see_creations": "Voir mes réalisations",
+    "demo": "À propos de moi",
+    "explore_demo": "À propos de moi",
+    "see_creations": "Voir mes créations",
     "contact": "Contactez-moi"
   },
   "creations": {
-    "heading": "Mes Créations",
-    "paragraph": "Quelques réalisations conçues pour des besoins concrets, avec un niveau d'investissement cohérent selon l'ambition du projet.",
+    "heading": "Mes créations",
+    "paragraph": "Découvrez ci-dessous quelques-uns des projets que j’ai réalisés.",
       "pricingNote": "Ces tarifs correspondent à des bases de lancement. Chaque projet est ensuite ajusté selon le contenu, les fonctionnalités et le niveau d'accompagnement attendu."
   },
   "cards": {
     "vitrine": {
       "title": "Amanda Traduction",
-      "description": "Site vitrine multilingue pour présenter des services de traduction avec une image claire et professionnelle.",
+      "description": "Site vitrine élaboré pour le compte d’une traductrice indépendante  et incluant différentes sections (présentation, services et tarifs, portfolio, contact)",
         "priceFrom": "À partir de 900 €"
     },
     "chalet": {
       "title": "Vivo Restaurant",
-      "description": "Site de restaurant pensé pour valoriser la carte, l'ambiance et la réservation en ligne.",
+      "description": "Site exemple de restaurant présentant le menu et incluant un module de réservation conçu de A à Z",
         "priceFrom": "À partir de 1 500 €"
     },
     "artisan": {
       "title": "La Montre de mon Grand-Père",
-      "description": "Site e-commerce dédié à la vente de montres, avec une mise en avant soignée des produits et de l'univers de marque.",
+      "description": "Site d’e-commerce dédié à la vente de montres, comprenant notamment un module de vente et de paiement en ligne et un espace client",
         "priceFrom": "À partir de 2 000 €"
     }
   },
   "contact": {
-    "heading": "Prêt à lancer votre projet ?",
-    "paragraph": "Parlez-moi de votre projet, de vos objectifs et de votre budget. Je vous fais un premier retour clair sous 24 à 48 h."
+    "heading": "Prêt(e) à lancer votre projet ?",
+    "paragraph": "Contactez-moi et parlons de votre projet ! Je vous réponds sous 24 à 48 heures."
   },
   "footer": {
-    "brand": "Hakuna Mataweb - le web sans souci",
-    "description": "Création de sites web sur-mesure, rapides et performants pour votre entreprise à Annecy, dans les Aravis et à Genève.",
+    "brand": "Hakuna Mataweb - Le web sans souci",
+    "description": "Création de sites web sur mesure, rapides et performants pour votre entreprise à Annecy, dans les Aravis, à Genève et partout ailleurs !",
     "contact": "Contact",
     "rights": "Fait avec passion par Hakuna Mataweb © {year}. Tous droits réservés.",
     "serviceAreas": "Zones d'intervention",
     "openModalAnnecy": "Ouvrir la modale Annecy",
     "openModalAravis": "Ouvrir la modale Aravis",
-    "openModalGeneva": "Ouvrir la modale Genève"
+    "openModalGeneva": "Ouvrir la modale Genève",
+    "openModalRemote": "Ouvrir la modale Accompagnement à distance"
   },
   "nav": {
-    "about": "À propos",
-    "explore": "Mes compétences",
+    "about": "Approche",
+    "explore": "À propos de moi",
     "creations": "Mes créations",
     "contact": "Contact",
     "quickLinks": "Liens rapides",
@@ -65,24 +66,24 @@
   },
   "hero": {
     "explorer": {
-      "label": "Expertise",
-      "ctaLabel": "Voir le terrain d’exploration",
-      "ctaDescription": "Animations, transitions et interactions pensées pour servir l'image de marque, pas faire gadget."
+      "label": "À propos",
+      "ctaLabel": "En apprendre plus",
+      "ctaDescription": "Apprenez-en plus sur mon parcours."
     },
     "about": {
-      "label": "Agence",
-      "ctaLabel": "Découvrir l'approche",
-      "ctaDescription": "Sites vitrines, réservation et e-commerce conçus sur-mesure pour répondre à des besoins concrets."
+      "label": "Approche",
+      "ctaLabel": "En savoir plus",
+      "ctaDescription": "Apprenez-en plus sur mon approche en matière de développement web."
     },
     "contact": {
       "label": "Contact",
-      "ctaLabel": "Demander un devis",
-      "ctaDescription": "On échange pour cadrer votre besoin, votre budget et la bonne solution sans perdre de temps."
+      "ctaLabel": "Me contacter",
+      "ctaDescription": "Parlons de votre projet et cherchons ensemble la solution adaptée à vos besoins."
     },
     "creations": {
-      "label": "Références",
+      "label": "Créations",
       "ctaLabel": "Voir les projets",
-      "ctaDescription": "Des réalisations pensées pour la crédibilité, la réservation en ligne et la vente."
+      "ctaDescription": "Jetez un œil aux différents projets que j’ai réalisés : vitrine, e-commerce et site de réservation."
     }
   },
   "aboutCards": {

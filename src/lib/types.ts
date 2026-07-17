@@ -55,6 +55,7 @@ export interface FooterMessages {
   openModalAnnecy: string;
   openModalAravis: string;
   openModalGeneva: string;
+  openModalRemote: string;
 }
 
 export interface NavMessages {

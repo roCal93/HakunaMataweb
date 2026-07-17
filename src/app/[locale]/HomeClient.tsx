@@ -45,7 +45,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
   const [enableTrail, setEnableTrail] = useState(false);
   const [shouldRenderContactButton, setShouldRenderContactButton] = useState(false);
   const [AboutCardsComponent, setAboutCardsComponent] = useState<ComponentType<{ messages: Messages }> | null>(null);
-  const [cityModal, setCityModal] = useState<{ open: boolean; city: 'annecy' | 'aravis' | 'geneva' | null }>({ open: false, city: null });
+  const [cityModal, setCityModal] = useState<{ open: boolean; city: 'annecy' | 'aravis' | 'geneva' | 'remote' | null }>({ open: false, city: null });
   const currentYear = new Date().getFullYear();
   const footerText = messages.aria.footerText.replace("{year}", String(currentYear));
 
@@ -122,7 +122,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
             )}
             <div className="flex flex-col sm:flex-row justify-center gap-4 mt-20 w-full max-w-md mx-auto">
               <div className="relative w-full sm:w-80">
-                <Link href={`/${locale}/demo`} className="block w-full">
+                <Link href="#explorer" className="block w-full">
                   <button className="w-full sm:w-80 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 px-8 py-3 text-lg font-semibold text-white transition-all duration-500 hover:from-amber-500 hover:to-amber-700 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2">
                     {messages.buttons.explore_demo}
                   </button>
@@ -167,38 +167,47 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
             <m.div
               ref={ref}
-              className="mb-16 text-center"
+              className="mb-16"
               animate={shouldReduceMotion ? {} : (isInView ? { opacity: 1 } : { opacity: 0 })}
               transition={shouldReduceMotion ? {} : { duration: 0.8 }}
             >
-              <m.div
-                initial={shouldReduceMotion ? {} : { opacity: 0, x: 100 }}
-                animate={shouldReduceMotion ? {} : (isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 })}
-                transition={shouldReduceMotion ? {} : { duration: 0.8, delay: 0.4 }}
-              >
-                <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100 md:text-4xl">{messages.explore.heading}</h2>
-              </m.div>
-              <m.div
-                initial={shouldReduceMotion ? {} : { opacity: 0, x: -100 }}
-                animate={shouldReduceMotion ? {} : (isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 })}
-                transition={shouldReduceMotion ? {} : { duration: 0.8, delay: 0.7 }}
-              >
-                <p className="mx-auto max-w-2xl text-xl text-gray-600 dark:text-gray-300">
-                  {messages.explore.paragraph}
-                </p>
-              </m.div>
-              <m.div
-                initial={shouldReduceMotion ? {} : { opacity: 0, x: 100 }}
-                animate={shouldReduceMotion ? {} : (isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 })}
-                transition={shouldReduceMotion ? {} : { duration: 0.8, delay: 1 }}
-                className="mt-20"
-              >
-                <Link href={`/${locale}/demo`}>
-                  <button className="rounded-full bg-gradient-to-br from-amber-400 to-amber-600 px-10 py-4 text-xl font-semibold text-white transition-all duration-500 hover:from-amber-500 hover:to-amber-700 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2">
-                    {messages.buttons.demo}
-                  </button>
-                </Link>
-              </m.div>
+              <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">
+                <m.div
+                  initial={shouldReduceMotion ? {} : { opacity: 0, x: -80 }}
+                  animate={shouldReduceMotion ? {} : (isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -80 })}
+                  transition={shouldReduceMotion ? {} : { duration: 0.8, delay: 0.35 }}
+                  className="mx-auto w-full max-w-md"
+                >
+                  <div className="relative overflow-hidden rounded-[2rem] border border-white/60 bg-white/70 p-2 shadow-[0_22px_60px_rgba(120,53,15,0.2)] backdrop-blur-sm">
+                    <Image
+                      src="/images/portraitDesktop.webp"
+                      alt={locale === 'fr' ? 'Portrait de Romain Calmelet' : 'Portrait of Romain Calmelet'}
+                      width={900}
+                      height={900}
+                      className="h-[340px] w-full rounded-[1.5rem] object-cover object-center"
+                      priority={false}
+                    />
+                  </div>
+                </m.div>
+
+                <m.div
+                  initial={shouldReduceMotion ? {} : { opacity: 0, x: 80 }}
+                  animate={shouldReduceMotion ? {} : (isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 })}
+                  transition={shouldReduceMotion ? {} : { duration: 0.8, delay: 0.55 }}
+                  className="text-left"
+                >
+                  <h2 className="mb-5 text-3xl font-bold text-gray-900 dark:text-gray-100 md:text-4xl">
+                    {messages.explore.heading}
+                  </h2>
+                  <div className="max-w-2xl text-xl leading-9 text-gray-700 dark:text-gray-300">
+                    {messages.explore.paragraph.split('\n\n').map((paragraph, index) => (
+                      <p key={index} className={index > 0 ? 'mt-6' : undefined}>
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </m.div>
+              </div>
             </m.div>
           </div>
         </section>
@@ -211,7 +220,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
             >
               <div className="mb-16 text-center">
                 <div className="mb-4 text-xs font-semibold uppercase tracking-[0.32em] text-amber-800/80 dark:text-amber-200/80">
-                  {locale === 'fr' ? 'Portfolio clients' : 'Client portfolio'}
+                  {locale === 'fr' ? 'Portfolio' : 'portfolio'}
                 </div>
                 <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100 md:text-4xl">{messages.creations.heading}</h2>
                 <p className="mx-auto max-w-2xl text-lg text-gray-700 dark:text-gray-300 md:text-xl">
@@ -450,6 +459,14 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                   >
                     {locale === 'fr' ? 'Genève' : 'Geneva'}
                   </button>
+                  <button
+                    type="button"
+                    aria-label={messages.footer.openModalRemote}
+                    className="block w-full text-center text-amber-200 hover:text-white transition-colors duration-300"
+                    onClick={() => setCityModal({ open: true, city: 'remote' })}
+                  >
+                    {locale === 'fr' ? 'Et partout ailleurs à distance !' : 'And everywhere else remotely!'}
+                  </button>
                 </div>
               </div>
               <div className="text-center md:text-right">
@@ -546,6 +563,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                   {cityModal.city === 'annecy' && (locale === 'fr' ? 'Annecy' : 'Annecy')}
                   {cityModal.city === 'aravis' && (locale === 'fr' ? 'Aravis' : 'Aravis')}
                   {cityModal.city === 'geneva' && (locale === 'fr' ? 'Genève' : 'Geneva')}
+                  {cityModal.city === 'remote' && (locale === 'fr' ? 'Accompagnement à distance' : 'Remote support')}
                 </h3>
                 <button
                   type="button"
@@ -574,6 +592,12 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
                   <>
                     <p>{locale === 'fr' ? 'Genève attire des clients du monde entier. Votre site est-il prêt à les accueillir ?' : 'Geneva attracts clients from all over the world. Is your website ready to welcome them?'}</p>
                     <p>{locale === 'fr' ? 'Sites multilingues, design soigné, performances optimisées : je conçois des sites pensés pour les entreprises genevoises qui évoluent dans un environnement international.' : 'Multilingual websites, refined design and optimized performance: I design websites for Geneva-based businesses operating in an international environment.'}</p>
+                  </>
+                )}
+                {cityModal.city === 'remote' && (
+                  <>
+                    <p>{locale === 'fr' ? 'Même si vous êtes loin d’Annecy, je peux vous accompagner de A à Z sur votre projet web.' : 'Even if you are far from Annecy, I can support your web project from start to finish.'}</p>
+                    <p>{locale === 'fr' ? 'Échanges en visio, suivi clair par email ou téléphone, validations à chaque étape : vous gardez une vision simple et précise de l’avancement.' : 'Video calls, clear follow-up by email or phone, and validation at each step: you keep a simple and precise view of progress.'}</p>
                   </>
                 )}
               </div>

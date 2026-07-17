@@ -6,58 +6,59 @@
   },
   "about": {
     "heading": "About",
-    "paragraph": "I design tailor-made websites built to showcase your business, reassure your visitors and support your growth."
+    "paragraph": "I design tailor-made websites created to highlight and enhance your business."
   },
   "explore": {
-    "heading": "Exploration space",
-    "paragraph": "An interactive preview of how rhythm, transitions and visual details can give a website more character."
+    "heading": "A few words about me",
+    "paragraph": "Hi, I am Romain!\n\nAfter ten years in watchmaking, where precision, rigor and attention to detail were part of my daily work, I decided to take on a new challenge: web development, a field I am passionate about for its varied tasks and endless possibilities.\n\nMy training and career change efforts became reality through Hakuna Mataweb. Today, I put my meticulous mindset and new skills at your service to showcase your business, whatever it may be."
   },
   "buttons": {
-    "demo": "Enter the exploration space",
-    "explore_demo": "Exploration space",
+    "demo": "About me",
+    "explore_demo": "About me",
     "see_creations": "See my creations",
     "contact": "Contact me"
   },
   "creations": {
-    "heading": "My Creations",
-    "paragraph": "A selection of projects built for concrete needs, with an investment level that matches each project's ambition.",
+    "heading": "My creations",
+    "paragraph": "Discover below some of the projects I have completed.",
       "pricingNote": "These prices reflect launch-level starting points. Each project is then adjusted according to content, features and the level of support required."
   },
   "cards": {
     "vitrine": {
       "title": "Amanda Traduction",
-      "description": "A multilingual showcase website designed to present translation services with a clear and professional image.",
+      "description": "A showcase website created for an independent translator, including different sections (presentation, services and rates, portfolio, contact).",
         "priceFrom": "Starting at €900"
     },
     "chalet": {
       "title": "Vivo Restaurant",
-      "description": "A restaurant website built to highlight the menu, atmosphere and online booking experience.",
+      "description": "A sample restaurant website presenting the menu and including a booking module designed from A to Z.",
         "priceFrom": "Starting at €1,500"
     },
     "artisan": {
       "title": "La Montre de mon Grand-Père",
-      "description": "An e-commerce website dedicated to watch sales, with careful product presentation and a strong brand universe.",
+      "description": "An e-commerce website dedicated to watch sales, including an online sales and payment module and a customer area.",
         "priceFrom": "Starting at €2,000"
     }
   },
   "contact": {
     "heading": "Ready to launch your project?",
-    "paragraph": "Tell me about your project, your goals and your budget. I will get back to you with a clear first response within 24 to 48 hours."
+    "paragraph": "Get in touch and let's discuss your project! I will get back to you within 24 to 48 hours."
   },
   "footer": {
     "brand": "Hakuna Mataweb - Web with no worries",
-    "description": "Tailor-made, fast and high-performance websites for your business in Annecy, the Aravis and Geneva.",
+    "description": "Tailor-made, fast and high-performance websites for your business in Annecy, the Aravis, Geneva and everywhere else remotely!",
     "contact": "Contact",
     "rights": "Made with passion by Hakuna Mataweb © {year}. All rights reserved.",
     "serviceAreas": "Service areas",
     "openModalAnnecy": "Open Annecy modal",
     "openModalAravis": "Open Aravis modal",
-    "openModalGeneva": "Open Geneva modal"
+    "openModalGeneva": "Open Geneva modal",
+    "openModalRemote": "Open remote support modal"
   },
   "nav": {
-    "about": "About",
-    "explore": "My skills",
-    "creations": "Creations",
+    "about": "Approach",
+    "explore": "About me",
+    "creations": "My creations",
     "contact": "Contact",
     "quickLinks": "Quick links",
     "privacy": "Privacy Policy",
@@ -65,24 +66,24 @@
   },
   "hero": {
     "explorer": {
-      "label": "Expertise",
-      "ctaLabel": "Enter the exploration space",
-      "ctaDescription": "Animations, transitions and interactions designed to support the brand, not feel gimmicky."
+      "label": "About",
+      "ctaLabel": "Learn more",
+      "ctaDescription": "Learn more about my background."
     },
     "about": {
-      "label": "Agency",
-      "ctaLabel": "See the approach",
-      "ctaDescription": "Showcase sites, booking flows and e-commerce experiences designed around real business needs."
+      "label": "Approach",
+      "ctaLabel": "Find out more",
+      "ctaDescription": "Learn more about my approach to web development."
     },
     "contact": {
       "label": "Contact",
-      "ctaLabel": "Request a quote",
-      "ctaDescription": "We talk through your needs, budget and the right solution without wasting time."
+      "ctaLabel": "Contact me",
+      "ctaDescription": "Let's discuss your project and find the right solution for your needs together."
     },
     "creations": {
-      "label": "References",
-      "ctaLabel": "See the projects",
-      "ctaDescription": "Selected work built for credibility, online booking and sales."
+      "label": "Creations",
+      "ctaLabel": "View projects",
+      "ctaDescription": "Take a look at the different projects I have built: showcase, e-commerce and booking websites."
     }
   },
   "aboutCards": {

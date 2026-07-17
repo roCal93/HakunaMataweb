@@ -23,9 +23,9 @@ describe('AboutCards', () => {
   });
   it('renders all cards with correct images and texts', () => {
     render(<AboutCards messages={fr} />);
-    expect(screen.getByText("L'innovation au service de votre projet.")).toBeInTheDocument();
-    expect(screen.getByText('Des solutions précises et adaptées à vos besoins.')).toBeInTheDocument();
-    expect(screen.getByText('Un site qui reflète vos valeurs et votre identité.')).toBeInTheDocument();
+    expect(screen.getByText('Des idées claires pour concevoir un site qui se démarque vraiment.')).toBeInTheDocument();
+    expect(screen.getByText('Une solution pensée pour vos objectifs, votre activité et votre manière de travailler.')).toBeInTheDocument();
+    expect(screen.getByText('Un site pensé pour refléter votre identité et vos valeurs.')).toBeInTheDocument();
   });
 
   it('renders buttons in touch mode and flips card on click', () => {
@@ -54,9 +54,9 @@ describe('AboutCards', () => {
       removeListener: jest.fn()
     }));
     render(<AboutCards messages={fr} />);
-    expect(screen.getByText("L'innovation au service de votre projet.")).toBeInTheDocument();
-    expect(screen.getByText('Des solutions précises et adaptées à vos besoins.')).toBeInTheDocument();
-    expect(screen.getByText('Un site qui reflète vos valeurs et votre identité.')).toBeInTheDocument();
+    expect(screen.getByText('Des idées claires pour concevoir un site qui se démarque vraiment.')).toBeInTheDocument();
+    expect(screen.getByText('Une solution pensée pour vos objectifs, votre activité et votre manière de travailler.')).toBeInTheDocument();
+    expect(screen.getByText('Un site pensé pour refléter votre identité et vos valeurs.')).toBeInTheDocument();
   });
 
   it('has accessible roles and attributes', () => {

@@ -26,9 +26,9 @@ describe('Intégration AboutCards + SplitContactButton', () => {
         <SplitContactButton messages={fr} />
       </>
     );
-    expect(await screen.findByText("L'innovation au service de votre projet.")).toBeInTheDocument();
-    expect(await screen.findByText('Des solutions précises et adaptées à vos besoins.')).toBeInTheDocument();
-    expect(await screen.findByText('Un site qui reflète vos valeurs et votre identité.')).toBeInTheDocument();
+    expect(await screen.findByText('Des idées claires pour concevoir un site qui se démarque vraiment.')).toBeInTheDocument();
+    expect(await screen.findByText('Une solution pensée pour vos objectifs, votre activité et votre manière de travailler.')).toBeInTheDocument();
+    expect(await screen.findByText('Un site pensé pour refléter votre identité et vos valeurs.')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Me contacter/i })).toBeInTheDocument();
   });
 

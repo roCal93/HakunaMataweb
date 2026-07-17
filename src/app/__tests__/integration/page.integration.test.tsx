@@ -43,10 +43,9 @@ describe('Intégration de la page principale', () => {
       </>
     );
     expect(screen.getByRole('button', { name: /Contact me/i })).toBeInTheDocument();
-    // Attend l'apparition des textes des cartes About (corrected text from en.json)
-    expect(await screen.findByText('Innovation at the service of your project.')).toBeInTheDocument();
-    expect(await screen.findByText('Precise solutions adapted to your needs.')).toBeInTheDocument();
-    expect(await screen.findByText('A site that reflects your values and identity.')).toBeInTheDocument();
+    expect(await screen.findByText('Clear ideas to shape a website that genuinely stands out.')).toBeInTheDocument();
+    expect(await screen.findByText('A solution shaped around your goals, your business and the way you work.')).toBeInTheDocument();
+    expect(await screen.findByText('A website designed to reflect your identity and values.')).toBeInTheDocument();
   });
 
   it('interaction : bouton contact ouvre les options', async () => {

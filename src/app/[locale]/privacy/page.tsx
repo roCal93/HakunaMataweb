@@ -43,7 +43,7 @@ export default async function PrivacyPage({ params }: { params: { locale: string
           Hakuna Mataweb — {isFr ? 'France' : 'France'}
         </p>
         <p>
-          {isFr ? 'Contact : ' : 'Contact: '}<a className="underline" href="mailto:contact@hakunamataweb.fr">contact@hakunamataweb.fr</a>
+          {isFr ? 'Contact : ' : 'Contact: '}<a className="underline" href="mailto:contact@hakunamataweb.com">contact@hakunamataweb.com</a>
         </p>
       </section>
 
