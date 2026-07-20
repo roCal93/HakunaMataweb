@@ -445,6 +445,20 @@ export function CircularHero({ messages }: CircularHeroProps) {
     if (isCompact || mobileScale !== 1 || !showOverlays || animateIn !== 'none') return;
 
     const handleWindowMouseMove = (event: globalThis.MouseEvent) => {
+      // If mouse re-enters the inner circle, close the overlay immediately
+      if (innerCircleRef.current && outerCircleRef.current) {
+        const outerRect = outerCircleRef.current.getBoundingClientRect();
+        const innerRect = innerCircleRef.current.getBoundingClientRect();
+        const centerX = outerRect.left + outerRect.width / 2;
+        const centerY = outerRect.top + outerRect.height / 2;
+        const innerRadius = innerRect.width / 2;
+        if (isInsideCircle(event.clientX, event.clientY, centerX, centerY, innerRadius)) {
+          cancelPendingClose();
+          setActiveQuadrant(null);
+          return;
+        }
+      }
+
       const isRightSide = event.clientX >= window.innerWidth / 2;
       const isBottomSide = event.clientY >= window.innerHeight / 2;
 
@@ -461,7 +475,11 @@ export function CircularHero({ messages }: CircularHeroProps) {
         return;
       }
 
-      scheduleOverlayClose();
+      // Directly switch to the new quadrant — no delay needed since pointer-events
+      // on the hover zones are disabled while an overlay is open, so onMouseEnter
+      // won't fire when the zones re-enable and the mouse is already inside.
+      cancelPendingClose();
+      setActiveQuadrant(hoveredQuadrant);
     };
 
     const handleWindowMouseLeave = () => {
