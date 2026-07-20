@@ -40,7 +40,7 @@ export default async function PrivacyPage({ params }: { params: { locale: string
       <section className="space-y-4 mb-8">
         <h2 className="text-xl font-semibold">{isFr ? 'Responsable de traitement' : 'Data Controller'}</h2>
         <p>
-          Hakuna Mataweb — {isFr ? 'France' : 'France'}
+          Hakuna Mataweb
         </p>
         <p>
           {isFr ? 'Contact : ' : 'Contact: '}<a className="underline" href="mailto:contact@hakunamataweb.com">contact@hakunamataweb.com</a>
