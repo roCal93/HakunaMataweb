@@ -113,7 +113,7 @@ export default async function PrivacyPage({ params }: { params: { locale: string
         <ul className="list-disc ml-6">
           <li>{isFr ? 'Accès, rectification, effacement, limitation, opposition, portabilité' : 'Access, rectification, erasure, restriction, objection, portability'}</li>
           <li>
-            {isFr ? 'Pour exercer vos droits : ' : 'To exercise your rights: '}<a className="underline" href="mailto:contact@hakunamataweb.fr">contact@hakunamataweb.fr</a>
+            {isFr ? 'Pour exercer vos droits : ' : 'To exercise your rights: '}<a className="underline" href="mailto:contact@hakunamataweb.com">contact@hakunamataweb.com</a>
           </li>
           <li>
             {isFr ? 'Réclamation : ' : 'Complaint: '}<a className="underline" href="https://www.cnil.fr/">CNIL</a>

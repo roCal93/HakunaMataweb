@@ -18,7 +18,7 @@ export default function LanguageSwitcher({ messages }: { messages: Messages }) {
   function toLocale(locale: Locale) { return localizedPath(pathname, locale); }
 
   return (
-    <section className="absolute top-4 right-4 z-50">
+    <section className="absolute right-4 top-12 z-50 sm:top-4">
       <div className="flex space-x-2 text-amber-600 font-semibold">
         <button
           aria-label={currentLocale === 'fr' ? messages.aria.currentLanguage : messages.aria.switchToFrench}

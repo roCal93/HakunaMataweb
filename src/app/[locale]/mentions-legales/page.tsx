@@ -44,16 +44,16 @@ export default async function MentionsLegalesPage({ params }: { params: { locale
           <strong>{isFr ? 'Statut :' : 'Status:'}</strong> {isFr ? 'Micro-entrepreneur' : 'Sole proprietor (France)'}
         </p>
         <p>
-          <strong>SIRET :</strong> <span className="text-amber-600">[À COMPLÉTER]</span>
+          <strong>SIRET :</strong> <span className="text-amber-600">10516071700010</span>
         </p>
         <p>
-          <strong>{isFr ? 'Adresse :' : 'Address:'}</strong> <span className="text-amber-600">[À COMPLÉTER - Adresse professionnelle]</span>
+          <strong>{isFr ? 'Adresse :' : 'Address:'}</strong> <span className="text-amber-600">21 route de Tronchine, 74230 Thônes, France</span>
         </p>
         <p>
           <strong>{isFr ? 'Téléphone :' : 'Phone:'}</strong> +33 7 45 22 96 97
         </p>
         <p>
-          <strong>Email :</strong> <a className="underline" href="mailto:contact@hakunamataweb.fr">contact@hakunamataweb.fr</a>
+          <strong>Email :</strong> <a className="underline" href="mailto:contact@hakunamataweb.com">contact@hakunamataweb.com</a>
         </p>
       </section>
 
@@ -147,7 +147,7 @@ export default async function MentionsLegalesPage({ params }: { params: { locale
           {isFr
             ? "Pour toute question concernant ces mentions légales, vous pouvez nous contacter à : "
             : "For any questions regarding these legal notices, you can contact us at: "}
-          <a className="underline" href="mailto:contact@hakunamataweb.fr">contact@hakunamataweb.fr</a>
+          <a className="underline" href="mailto:contact@hakunamataweb.com">contact@hakunamataweb.com</a>
         </p>
       </section>
 
