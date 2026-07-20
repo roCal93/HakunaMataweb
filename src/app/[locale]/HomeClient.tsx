@@ -83,7 +83,7 @@ export default function HomeClient({ messages, locale }: HomeClientProps) {
       <div className="bg-gradient-to-b from-amber-100 to-amber-200 dark:from-gray-900 dark:to-gray-900">
         <LanguageSwitcher messages={messages} />
         {messages.home.heroTagline ? (
-          <div className="mx-auto px-6 pb-2 pt-4 text-center sm:pt-6">
+          <div className="relative z-50 mx-auto px-6 pb-2 pt-4 text-center sm:pt-6">
             <p className="text-sm font-semibold uppercase tracking-[0.32em] text-amber-700/85 sm:text-base">
               {messages.home.heroTagline}
             </p>
