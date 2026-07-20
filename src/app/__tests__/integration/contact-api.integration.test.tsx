@@ -3,24 +3,17 @@ import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
 import SplitContactButton from '../../components/SplitContactButton';
 import fr from '../../../locales/fr.json';
 
-// Mock IntersectionObserver
-beforeAll(() => {
-  global.IntersectionObserver = class {
-    constructor() {}
-    root = null;
-    rootMargin = '';
-    thresholds = [];
-    takeRecords() { return []; }
-    observe() {}
-    unobserve() {}
-    disconnect() {}
-  };
-});
-
 describe('Intégration API contact', () => {
+  let consoleLogSpy: jest.SpyInstance;
+
   beforeEach(() => {
+    consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
     // Mock fetch
     global.fetch = jest.fn().mockResolvedValue({ ok: true });
+  });
+
+  afterEach(() => {
+    consoleLogSpy.mockRestore();
   });
 
   it('soumet le formulaire de rappel et affiche le message de succès', async () => {

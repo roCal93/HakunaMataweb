@@ -1,17 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { mockPush, mockUsePathname } from '../../../test-utils/nextNavigationMock';
 import LanguageSwitcher from '../LanguageSwitcher';
 import type { Messages } from '@/lib/types';
-
-// Mock next/navigation hooks
-const mockPush = jest.fn();
-const mockUsePathname = jest.fn();
-const mockUseRouter = jest.fn(() => ({ push: mockPush }));
-
-jest.mock('next/navigation', () => ({
-  usePathname: () => mockUsePathname(),
-  useRouter: () => mockUseRouter(),
-}));
 
 // Mock partiel des messages pour les tests
 const mockMessages = { 

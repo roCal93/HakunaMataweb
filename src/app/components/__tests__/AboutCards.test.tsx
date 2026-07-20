@@ -3,21 +3,13 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import AboutCards from '../AboutCards';
 import fr from '../../../locales/fr.json';
 
-// Mock IntersectionObserver
-beforeAll(() => {
-  global.IntersectionObserver = class {
-    constructor() {}
-    root: Element | null = null;
-    rootMargin: string = '';
-    thresholds: ReadonlyArray<number> = [];
-    takeRecords(): IntersectionObserverEntry[] { return []; }
-    observe() {}
-    unobserve() {}
-    disconnect() {}
-  };
-});
+const originalMatchMedia = window.matchMedia;
 
 describe('AboutCards', () => {
+  afterEach(() => {
+    window.matchMedia = originalMatchMedia;
+  });
+
   it('should render without crashing', () => {
     render(<AboutCards messages={fr} />);
   });

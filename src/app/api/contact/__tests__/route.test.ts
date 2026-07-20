@@ -36,6 +36,8 @@ function createMockRequest(body: Record<string, unknown>): Partial<NextRequest> 
 
 describe('Contact API', () => {
   const ORIGINAL_ENV = process.env;
+  let consoleLogSpy: jest.SpyInstance;
+  let consoleErrorSpy: jest.SpyInstance;
 
   beforeEach(() => {
     jest.resetModules();
@@ -43,6 +45,13 @@ describe('Contact API', () => {
     delete process.env.RESEND_API_KEY;
     delete process.env.CONTACT_EMAIL;
     delete process.env.CONTACT_EMAIL_PASS;
+    consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    consoleLogSpy.mockRestore();
+    consoleErrorSpy.mockRestore();
   });
 
   afterAll(() => {

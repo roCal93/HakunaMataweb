@@ -1,27 +1,5 @@
 import React from 'react';
-// Mock next/navigation hooks
-const mockPush = jest.fn();
-const mockUsePathname = jest.fn();
-const mockUseRouter = jest.fn(() => ({ push: mockPush }));
-
-jest.mock('next/navigation', () => ({
-  usePathname: () => mockUsePathname(),
-  useRouter: () => mockUseRouter(),
-}));
-
-// Mock IntersectionObserver
-beforeAll(() => {
-  global.IntersectionObserver = class {
-    constructor() {}
-    root = null;
-    rootMargin = '';
-    thresholds = [];
-    takeRecords() { return []; }
-    observe() {}
-    unobserve() {}
-    disconnect() {}
-  };
-});
+import { mockPush, mockUsePathname } from '../../../test-utils/nextNavigationMock';
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import { CircularHero } from '../../components/CircularHero';
 import AboutCards from '../../components/AboutCards';

@@ -4,6 +4,16 @@ import SplitContactButton from '../SplitContactButton';
 import fr from '../../../locales/fr.json';
 
 describe('SplitContactButton', () => {
+  let consoleErrorSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    consoleErrorSpy.mockRestore();
+  });
+
   it('should render without crashing', () => {
     render(<SplitContactButton messages={fr} />);
   });

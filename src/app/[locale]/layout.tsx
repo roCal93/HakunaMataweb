@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import '../globals.css';
 import fr from '../../locales/fr.json';
 import en from '../../locales/en.json';
@@ -116,6 +117,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
       </head>
       <body className={`${jakarta.className} antialiased`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );

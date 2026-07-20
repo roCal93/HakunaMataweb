@@ -4,20 +4,6 @@ import AboutCards from '../../components/AboutCards';
 import SplitContactButton from '../../components/SplitContactButton';
 import fr from '../../../locales/fr.json';
 
-// Mock IntersectionObserver
-beforeAll(() => {
-  global.IntersectionObserver = class {
-    constructor() {}
-    root = null;
-    rootMargin = '';
-    thresholds = [];
-    takeRecords() { return []; }
-    observe() {}
-    unobserve() {}
-    disconnect() {}
-  };
-});
-
 describe('Intégration AboutCards + SplitContactButton', () => {
   it('affiche les cartes et le bouton contact', async () => {
     render(
