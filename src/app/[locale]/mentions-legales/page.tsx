@@ -14,7 +14,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const description = locale === 'fr'
     ? 'Mentions légales du site Hakuna Mataweb : éditeur, hébergeur, propriété intellectuelle et responsabilité.'
     : 'Legal notice for Hakuna Mataweb website: publisher, host, intellectual property and liability.';
-  return { title, description };
+  return {
+    title,
+    description,
+    robots: {
+      index: false,
+      follow: true,
+    },
+  };
 }
 
 export default async function MentionsLegalesPage({ params }: { params: { locale: string } | Promise<{ locale: string }> }) {

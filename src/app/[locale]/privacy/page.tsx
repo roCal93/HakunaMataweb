@@ -14,7 +14,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const description = locale === 'fr'
     ? 'Informations sur l’utilisation des données personnelles, finalités, bases légales, destinataires, transferts, durées de conservation et droits RGPD.'
     : 'Information on the use of personal data, purposes, legal bases, recipients, transfers, retention periods and GDPR rights.';
-  return { title, description };
+  return {
+    title,
+    description,
+    robots: {
+      index: false,
+      follow: true,
+    },
+  };
 }
 
 export default async function PrivacyPage({ params }: { params: { locale: string } | Promise<{ locale: string }> }) {
