@@ -1,4 +1,3 @@
-import React from 'react';
 import Page from '../[locale]/page';
 
 describe('Page', () => {

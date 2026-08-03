@@ -46,7 +46,6 @@ export function ContactButton({
     <m.button
       onClick={onClick}
       className={`absolute py-3 px-4 rounded-lg text-lg font-semibold shadow-lg whitespace-nowrap overflow-hidden flex items-center justify-center ${getButtonClass()}`}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       animate={buttonStyles as any}
       transition={{
         duration: prefersReducedMotion

@@ -2,7 +2,6 @@
 
 import { useRouter, usePathname } from 'next/navigation';
 import type { Locale } from '../../lib/locales';
-import { locales } from '../../lib/locales';
 import { localizedPath, currentLocaleFromPath } from '@/lib/url';
 import type { Messages } from '@/lib/types';
 

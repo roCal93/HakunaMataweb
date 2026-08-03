@@ -132,7 +132,6 @@ export default function SplitContactButton({
     };
     window.addEventListener('hmw-open-callback', onOpenCallback);
     return () => window.removeEventListener('hmw-open-callback', onOpenCallback);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stage, handleClick, handleContactClick, setSafeTimeout, prefersReducedMotion]);
 
   // Handle form submission

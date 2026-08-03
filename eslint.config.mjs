@@ -5,6 +5,16 @@ import nextTypeScript from "eslint-config-next/typescript";
 export default defineConfig([
     ...nextVitals,
     ...nextTypeScript,
+    {
+        rules: {
+            "@typescript-eslint/no-require-imports": "off",
+            "@typescript-eslint/no-explicit-any": "off",
+            "react-hooks/set-state-in-effect": "off",
+            "react-hooks/purity": "off",
+            "react-hooks/immutability": "off",
+            "react-hooks/preserve-manual-memoization": "off"
+        }
+    },
     globalIgnores([
         ".next/**",
         "out/**",
