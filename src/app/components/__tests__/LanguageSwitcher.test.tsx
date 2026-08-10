@@ -14,18 +14,9 @@ const mockMessages = {
 } as unknown as Messages;
 
 describe('LanguageSwitcher component', () => {
-  let originalLocation: Location;
   beforeEach(() => {
     mockPush.mockClear();
     mockUsePathname.mockReset();
-    // Replace location.assign with a spyable function for JSDOM
-    originalLocation = window.location;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    delete window.location;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    window.location = { ...originalLocation, assign: jest.fn() } as unknown as Location;
   });
 
   it('navigates to the other language when activated via keyboard', () => {
@@ -36,11 +27,5 @@ describe('LanguageSwitcher component', () => {
     // Click to select EN
     fireEvent.click(enButton);
     expect(mockPush).toHaveBeenCalledWith('/en');
-  });
-  afterEach(() => {
-    // Restore original location
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    window.location = originalLocation;
   });
 });
