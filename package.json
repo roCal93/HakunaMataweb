@@ -27,7 +27,7 @@
     "@babel/preset-typescript": "^7.28.5",
     "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/jest-dom": "^6.0.0",
-    "@testing-library/react": "^16.3.0",
+    "@testing-library/react": "^16.3.3",
     "@types/jest": "^30.0.0",
     "@types/node": "^26",
     "@types/nodemailer": "^8.0.1",
