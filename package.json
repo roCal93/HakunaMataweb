@@ -40,7 +40,7 @@
     "glob": "^13.0.6",
     "jest": "30.5.0",
     "jest-environment-jsdom": "30.5.1",
-    "js-yaml": "^5.4.1",
+    "js-yaml": "^5.4.2",
     "next": "^16.3.4",
     "postcss": "^8.5.23",
     "tailwindcss": "^4.3.3",
