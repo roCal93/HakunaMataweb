@@ -20,7 +20,7 @@
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-intersection-observer": "^11.0.1",
-    "resend": "^6.27.0"
+    "resend": "^6.28.1"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.28.5",
