@@ -41,7 +41,7 @@
     "jest": "30.5.0",
     "jest-environment-jsdom": "30.5.2",
     "js-yaml": "^5.4.2",
-    "next": "^16.3.6",
+    "next": "^16.3.8",
     "postcss": "^8.5.23",
     "tailwindcss": "^4.3.3",
     "ts-jest": "^29.4.13",
