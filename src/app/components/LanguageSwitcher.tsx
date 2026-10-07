@@ -1,12 +1,12 @@
 "use client";
 
-import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import type { Locale } from '../../lib/locales';
 import { localizedPath, currentLocaleFromPath } from '@/lib/url';
 import type { Messages } from '@/lib/types';
 
 export default function LanguageSwitcher({ messages }: { messages: Messages }) {
-  const router = useRouter();
   const pathname = usePathname() || '/';
 
   // Determine current locale
@@ -19,21 +19,23 @@ export default function LanguageSwitcher({ messages }: { messages: Messages }) {
   return (
     <section className="absolute right-4 top-12 z-50 sm:top-4">
       <div className="flex space-x-2 text-amber-600 font-semibold">
-        <button
+        <Link
           aria-label={currentLocale === 'fr' ? messages.aria.currentLanguage : messages.aria.switchToFrench}
-          className={`hover:underline ${currentLocale === 'fr' ? 'underline' : ''}`}
-          onClick={() => router.push(toLocale('fr'))}
+          aria-current={currentLocale === 'fr' ? 'page' : undefined}
+          className={`cursor-pointer hover:underline ${currentLocale === 'fr' ? 'underline' : ''}`}
+          href={toLocale('fr')}
         >
           FR
-        </button>
+        </Link>
         <span>/</span>
-        <button
+        <Link
           aria-label={currentLocale === 'en' ? messages.aria.currentLanguage : messages.aria.switchToEnglish}
-          className={`hover:underline ${currentLocale === 'en' ? 'underline' : ''}`}
-          onClick={() => router.push(toLocale('en'))}
+          aria-current={currentLocale === 'en' ? 'page' : undefined}
+          className={`cursor-pointer hover:underline ${currentLocale === 'en' ? 'underline' : ''}`}
+          href={toLocale('en')}
         >
           EN
-        </button>
+        </Link>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { mockPush, mockUsePathname } from '../../../test-utils/nextNavigationMock';
+import { render, screen } from '@testing-library/react';
+import { mockUsePathname } from '../../../test-utils/nextNavigationMock';
 import LanguageSwitcher from '../LanguageSwitcher';
 import type { Messages } from '@/lib/types';
 
@@ -15,17 +15,12 @@ const mockMessages = {
 
 describe('LanguageSwitcher component', () => {
   beforeEach(() => {
-    mockPush.mockClear();
     mockUsePathname.mockReset();
   });
 
-  it('navigates to the other language when activated via keyboard', () => {
+  it('provides a native link to the other language', () => {
     mockUsePathname.mockReturnValue('/fr');
     render(<LanguageSwitcher messages={mockMessages} />);
-    const enButton = screen.getByRole('button', { name: 'Switch to English' });
-    enButton.focus();
-    // Click to select EN
-    fireEvent.click(enButton);
-    expect(mockPush).toHaveBeenCalledWith('/en');
+    expect(screen.getByRole('link', { name: 'Switch to English' })).toHaveAttribute('href', '/en');
   });
 });
