@@ -15,7 +15,7 @@
     "@next/bundle-analyzer": "^16.3.8",
     "@vercel/analytics": "^2.0.1",
     "framer-motion": "^13.5.0",
-    "lucide-react": "^1.47.0",
+    "lucide-react": "^1.54.0",
     "nodemailer": "^10.0.13",
     "react": "19.3.0",
     "react-dom": "19.3.0",
