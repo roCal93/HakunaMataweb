@@ -33,7 +33,7 @@
     "@types/nodemailer": "^8.0.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "autoprefixer": "^10.6.1",
+    "autoprefixer": "^10.6.2",
     "babel-jest": "30.5.2",
     "eslint": "^9",
     "eslint-config-next": "^16.4.3",
