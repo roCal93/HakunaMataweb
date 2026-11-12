@@ -36,7 +36,7 @@
     "autoprefixer": "^10.6.1",
     "babel-jest": "30.5.2",
     "eslint": "^9",
-    "eslint-config-next": "^16.4.3",
+    "eslint-config-next": "^16.4.5",
     "glob": "^14.0.4",
     "jest": "30.5.0",
     "jest-environment-jsdom": "30.5.2",
